@@ -1,3 +1,4 @@
+import javax.swing.plaf.basic.BasicBorders.RolloverButtonBorder;
 
 public class Die
 {
@@ -6,6 +7,12 @@ public class Die
 	public Die()
 	{
 		this.roll();
+	}
+	
+	public Die (int number )
+	{
+		
+		this.roll(number);
 	}
 
 	public int getLastRoll() // getter or accessor method
@@ -16,7 +23,15 @@ public class Die
 
 	public void roll() // note how this changes Die's state, but doesn't return anything
 	{
+
 		this.lastRoll = (int) (Math.random() * 6 + 1);
+		
+	}
+	
+	public void roll (int number) {
+		
+		lastRoll = number;
+		
 	}
 	
 	@Override
@@ -24,5 +39,7 @@ public class Die
 	{
 		return "Die: " + this.getLastRoll();
 	}
+	
+
 
 }
