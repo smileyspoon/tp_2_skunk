@@ -9,7 +9,7 @@ public class Die
 		this.roll();
 	}
 	
-	public Die (int number )
+	public Die (int number)
 	{
 		
 		this.roll(number);
@@ -25,13 +25,10 @@ public class Die
 	{
 
 		this.lastRoll = (int) (Math.random() * 6 + 1);
-		
 	}
 	
 	public void roll (int number) {
-		
-		lastRoll = number;
-		
+		lastRoll = number;	
 	}
 	
 	@Override

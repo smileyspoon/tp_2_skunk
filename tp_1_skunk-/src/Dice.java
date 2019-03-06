@@ -35,17 +35,10 @@ public class Dice
 	
 	
 
-	public Dice(int number) // overloaded constructor
+	public Dice(int die1, int die2) // overloaded constructor
 	{
-		
-		this.die1 = new Die(number);
-		this.die2 = new Die(number);
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
-	}
-
-	
-
-	
+		this.lastRoll = die1 + die2;
+	}	
 	
 	// Instance methods can also be declared anywhere
 	// Convention: after constructors
