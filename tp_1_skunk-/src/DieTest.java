@@ -19,7 +19,6 @@ public class DieTest {
 	@Test
 	public void test1() {
 		die = new Die(1);
-		die.roll();
 		int value = die.getLastRoll();
 		assertEquals("First value not 1", 1, value);
 	}
@@ -27,15 +26,13 @@ public class DieTest {
 	@Test
 	public void test2() {
 		die = new Die(1);
-		die.roll();
 		int value = die.getLastRoll();
 		assertEquals("First value not 1", 1, value);
 	}
 	
 	@Test
 	public void test3() {
-		die = new Die(1); // this should make it fail (TDD) - fix before submission
-		die.roll();
+		die = new Die(1); // this should make it fail
 		int value = die.getLastRoll();
 		assertEquals("First value not 2", 2, value);
 	}
@@ -43,7 +40,6 @@ public class DieTest {
 	@Test
 	public void test4() {
 		die = new Die(3);
-		die.roll();
 		int value = die.getLastRoll();
 		assertEquals("First value not 3", 3, value);
 	}

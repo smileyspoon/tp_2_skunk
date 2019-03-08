@@ -6,9 +6,6 @@ import org.junit.Test;
 
 public class DiceTest {
 
-	Die die1;
-	Die die2;
-	
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -18,12 +15,8 @@ public class DiceTest {
 	}
 
 	@Test
-	public void testRollOf3() {
-		die1 = new Die(1); // this roll will fail (TDD) - fix before submission
-		die2 = new Die(1);
-		die1.roll();
-		die2.roll();
-		int value = die1.getLastRoll() + die2.getLastRoll();
-		assertEquals("Value not 3", 3, value);
+	public void test() {
+		fail("Not yet implemented");
 	}
+
 }
