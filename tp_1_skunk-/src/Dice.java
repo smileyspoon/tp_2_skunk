@@ -19,7 +19,6 @@ public class Dice
 	private Die die1;
 	private Die die2;
 
-
 	// Constructors (object initializers) also can be declared anywhere
 	// Convention: after instance fields/variables
 
@@ -31,13 +30,13 @@ public class Dice
 		this.die1 = new Die();
 		this.die2 = new Die();
 		this.roll();
-	}
-	
-	
+	}	
 
-	public Dice(int die1, int die2) // overloaded constructor
+	public Dice(int testableDie1, int testableDie2) // overloaded constructor
 	{
-		this.lastRoll = die1 + die2;
+		this.die1 = new Die(testableDie1);
+		this.die2 = new Die(testableDie2);
+		this.roll();
 	}	
 	
 	// Instance methods can also be declared anywhere
@@ -55,8 +54,7 @@ public class Dice
 
 		die1.roll();
 		die2.roll();
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
-
+		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();			
 	}
 
 	// the following method converts the internals of
