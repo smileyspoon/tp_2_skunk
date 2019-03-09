@@ -8,7 +8,7 @@ import org.junit.Test;
 public class DiceTestCalvin {
 
 	private Dice dice;
-	private int count =0;
+
 	
 	@Before
 	public void setUp() throws Exception {
@@ -26,25 +26,17 @@ public class DiceTestCalvin {
 		dice = new Dice(predictablRoll, predictablRoll2);
 		
 		dice.roll();
-		predictablRoll [count] = dice.getLastRoll();
-		assertEquals("First value is 1", 2, predictablRoll [count]);
-		count++;
+		assertEquals("First value is 1", 2, dice.getLastRoll());
 		
 		dice.roll();
-		predictablRoll [count] = dice.getLastRoll();
-		assertEquals("First value is 1", 4, predictablRoll [count]);
-		count++;
+		assertEquals("First value is 1", 4, dice.getLastRoll());
+
+		dice.roll();
+		assertEquals("First value is 1", 6, dice.getLastRoll());
 		
 		dice.roll();
-		predictablRoll [count] = dice.getLastRoll();
-		assertEquals("First value is 1", 6, predictablRoll [count]);
-		count++;
-		
-		dice.roll();
-		predictablRoll [count] = dice.getLastRoll();
-		assertEquals("First value is 1", 8, predictablRoll [count]);
-		count++;
-		
+		assertEquals("First value is 1", 8, dice.getLastRoll());
+
 		
 	}
 	

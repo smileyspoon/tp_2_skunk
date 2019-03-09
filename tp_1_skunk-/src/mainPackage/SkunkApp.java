@@ -1,20 +1,31 @@
 package mainPackage;
+import static org.junit.Assert.assertEquals;
+
 import edu.princeton.cs.introcs.StdOut;
 
 public class SkunkApp {
 
 	public static void main(String[] args) {
 		
-		Dice dice1 = new Dice();		
-		StdOut.println("This is a test roll: " + dice1.getLastRoll());
+		Dice dice1 = new Dice();	
+		dice1.roll();
+		StdOut.println("This is a random roll: " + dice1.getLastRoll());
 		
-		Dice dice2 = new Dice(3,2);
-		StdOut.println("This is a test roll of 5: " + dice2.getLastRoll());
-		Dice dice3 = new Dice(4,2);		
-		StdOut.println("This is a test roll of 6: " + dice3.getLastRoll());
-		Dice dice4 = new Dice(3,4);		
-		StdOut.println("This is a test roll of 7: " + dice4.getLastRoll());
-		Dice dice5 = new Dice(5,6);		
-		StdOut.println("This is a test roll of 11: " + dice5.getLastRoll());	
-	}
+		int predictablRoll [] = {1,2,3,4} ;
+		int predictablRoll2 [] = {1,2,3,4} ;
+		Dice dice2 = new Dice(predictablRoll, predictablRoll2);
+		
+		dice2.roll();
+		StdOut.println("This is a  predictable roll 1: " + dice2.getLastRoll());
+		
+		dice2.roll();
+		StdOut.println("This is a predictable rol 2: " + dice2.getLastRoll());
+		
+		dice2.roll();
+		StdOut.println("This is a predictable rol 3: " + dice2.getLastRoll());
+		
+		dice2.roll();
+		StdOut.println("This is a predictable rol 4: " + dice2.getLastRoll());
+
+}
 }
