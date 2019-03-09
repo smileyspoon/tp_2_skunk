@@ -8,6 +8,7 @@ import org.junit.Test;
 public class DieTest {
 
 	private Die die;
+	private int count =0;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -18,35 +19,31 @@ public class DieTest {
 	}
 
 	@Test
-	public void test1() {
-		die = new Die(1);
+	public void test() {
+		int predictablRoll [] = {1,2,3,4} ;
+		
+		die = new Die(predictablRoll);
+		
 		die.roll();
-		int value = die.getLastRoll();
-		assertEquals("First value not 1", 1, value);
+		assertEquals("First value is 1", 1, predictablRoll [count]);
+		count++;
+		
+		die.roll();
+		assertEquals("First value is 2", 2, predictablRoll [count]);
+		count++;
+		
+		die.roll();
+		assertEquals("First value is 3", 3, predictablRoll [count]);
+		count++;
+		
+		die.roll();
+		assertEquals("First value is 4", 4, predictablRoll [count]);
+		count++;
+		
+		
 	}
 	
-	@Test
-	public void test2() {
-		die = new Die(1);
-		die.roll();
-		int value = die.getLastRoll();
-		assertEquals("First value not 1", 1, value);
-	}
 	
-	@Test
-	public void test3() {
-		die = new Die(1); // this should make it fail (TDD) - fix before submission
-		die.roll();
-		int value = die.getLastRoll();
-		assertEquals("First value not 2", 2, value);
-	}
 	
-	@Test
-	public void test4() {
-		die = new Die(3);
-		die.roll();
-		int value = die.getLastRoll();
-		assertEquals("First value not 3", 3, value);
-	}
 
 }

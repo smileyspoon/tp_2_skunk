@@ -1,15 +1,14 @@
 package JUnitTest;
-import mainPackage.*;
 import static org.junit.Assert.*;
-
+import mainPackage.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class DiceTest {
 
-	Die die1;
-	Die die2;
+	private Dice dice;
+
 	
 	@Before
 	public void setUp() throws Exception {
@@ -20,12 +19,28 @@ public class DiceTest {
 	}
 
 	@Test
-	public void testRollOf3() {
-		die1 = new Die(3); // this roll will fail (TDD) - fix before submission
-		die2 = new Die(3);
-		die1.roll();
-		die2.roll();
-		int value = die1.getLastRoll() + die2.getLastRoll();
-		assertEquals("Value not 3", 3, value);
+	public void test() {
+		int predictablRoll [] = {1,2,3,4} ;
+		int predictablRoll2 [] = {1,2,3,4} ;
+		
+		dice = new Dice(predictablRoll, predictablRoll2);
+		
+		dice.roll();
+		assertEquals("First value is 1", 2, dice.getLastRoll());
+		
+		dice.roll();
+		assertEquals("First value is 1", 4, dice.getLastRoll());
+
+		dice.roll();
+		assertEquals("First value is 1", 6, dice.getLastRoll());
+		
+		dice.roll();
+		assertEquals("First value is 1", 8, dice.getLastRoll());
+
+		
 	}
+	
+	
+	
+
 }
