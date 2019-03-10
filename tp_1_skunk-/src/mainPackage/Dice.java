@@ -30,23 +30,12 @@ public class Dice
 
 		this.die1 = new Die();
 		this.die2 = new Die();
-
 	}	
-
-//	public Dice(int testableDie1, int testableDie2) // overloaded constructor
-//	{
-//		this.die1 = new Die(testableDie1);
-//		this.die2 = new Die(testableDie2);
-
-//	}	
-	
 	
 	public Dice(int [] testableDie1, int [] testableDie2) // overloaded constructor
 	{
-
 		this.die1 = new Die(testableDie1);
 		this.die2 = new Die(testableDie2);
-
 	}	
 	
 	// Instance methods can also be declared anywhere
@@ -65,7 +54,6 @@ public class Dice
 		die1.roll();
 		die2.roll();
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();		
-
 	}
 
 	// the following method converts the internals of
@@ -77,7 +65,6 @@ public class Dice
 	public String toString()
 	{
 		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
-
 	}
 
 	// static methods can go anywhere - but at end is standard

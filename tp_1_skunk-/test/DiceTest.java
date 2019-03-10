@@ -7,39 +7,71 @@ import org.junit.Test;
 public class DiceTest {
 
 	private Dice dice;
-
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception 
+	{
+		int predictablRoll1 [] = {1,3,5} ;
+		int predictablRoll2 [] = {2,4,6} ;
+		dice = new Dice(predictablRoll1, predictablRoll2);
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() throws Exception 
+	{
 	}
 
 	@Test
-	public void test() {
-		int predictablRoll [] = {1,2,3,4} ;
-		int predictablRoll2 [] = {1,2,3,4} ;
-		
-		dice = new Dice(predictablRoll, predictablRoll2);
-		
+	public void testRoll1ofPredictableDice() 
+	{
 		dice.roll();
-		assertEquals("First value is 1", 2, dice.getLastRoll());
-		
-		dice.roll();
-		assertEquals("First value is 1", 4, dice.getLastRoll());
-
-		dice.roll();
-		assertEquals("First value is 1", 6, dice.getLastRoll());
-		
-		dice.roll();
-		assertEquals("First value is 1", 8, dice.getLastRoll());
-
-		
+		assertEquals("First roll is 3", 3, dice.getLastRoll());		
 	}
 	
+	@Test
+	public void testRoll2ofPredictableDice() 
+	{
+		dice.roll();
+		dice.roll();
+		assertEquals("First roll is 7", 7, dice.getLastRoll());		
+	}
 	
+	@Test
+	public void testRoll3ofPredictableDice() 
+	{
+		dice.roll();
+		dice.roll();
+		dice.roll();
+		assertEquals("First roll is 11", 11, dice.getLastRoll());		
+	}
 	
+	@Test
+	public void testRoll4ofPredictableDiceWith3RollsInit() 
+	{
+		dice.roll();
+		dice.roll();
+		dice.roll();
+		dice.roll();
+		assertEquals("First roll is 3", 3, dice.getLastRoll());		
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testNullDiceArray()
+	{
+		Dice dice = new Dice(null, null);
+		dice.roll();
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testDiceValueLessThan1() 
+	{
+		//need to finish
 
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testDiceValueMoreThan6() 
+	{
+		//need to finish
+	}
 }
