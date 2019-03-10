@@ -20,9 +20,9 @@ public class DieTest {
 
 	@Test
 	public void test() {
-		int predictablRoll [] = {1,2,3,4} ;
+		int predictablRoll [] = {1,2,3,4} ; //predictablRoll has a value of 1-4 array
 		
-		die = new Die(predictablRoll);
+		die = new Die(predictablRoll); //initialize new die
 		
 		die.roll();
 		assertEquals("First value is 1", 1, predictablRoll [count]);
@@ -41,6 +41,16 @@ public class DieTest {
 		count++;
 		
 		
+	}
+	
+	@Test
+	public void test_roll_2_of_predictable_die()
+	{
+		Die die = new Die(new int [] {3,2,1});
+		die.getLastRoll();
+		assertEquals("First value not 3",3, die.getLastRoll());
+		die.roll();
+		assertEquals("second value not 2", 2, die.getLastRoll());
 	}
 	
 	

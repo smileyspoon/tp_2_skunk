@@ -12,11 +12,11 @@ public class Die
 		this.roll();
 	}
 
-	public Die (int number)
-	{
-		testableDie = true;
-		this.dieRoll = number;
-	}
+//	public Die (int number)
+//	{
+//		testableDie = true;
+//		this.dieRoll = number;
+//	}
 	
 	public Die (int [] predictablRoll ) {
 		

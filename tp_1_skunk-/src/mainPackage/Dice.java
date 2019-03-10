@@ -33,12 +33,12 @@ public class Dice
 
 	}	
 
-	public Dice(int testableDie1, int testableDie2) // overloaded constructor
-	{
-		this.die1 = new Die(testableDie1);
-		this.die2 = new Die(testableDie2);
+//	public Dice(int testableDie1, int testableDie2) // overloaded constructor
+//	{
+//		this.die1 = new Die(testableDie1);
+//		this.die2 = new Die(testableDie2);
 
-	}	
+//	}	
 	
 	
 	public Dice(int [] testableDie1, int [] testableDie2) // overloaded constructor
