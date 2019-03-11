@@ -3,6 +3,9 @@ import mainPackage.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import junit.framework.Assert;
 
 public class DiceTest {
 
@@ -78,4 +81,14 @@ public class DiceTest {
 		Die die = new Die(predictablRoll);
 		die.roll();
 	}
+	
+	@Test
+	public void testToString() {
+		
+		//created new string object
+		String value = new String();
+		String expected = ""; //expected string value
+		assertEquals(expected, value.toString());
+	}
+	
 }

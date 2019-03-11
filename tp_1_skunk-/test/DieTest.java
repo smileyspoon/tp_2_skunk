@@ -87,4 +87,5 @@ public class DieTest {
 		die = new Die(predictablRoll);
 		die.roll();
 	}
+
 }
