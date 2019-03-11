@@ -65,13 +65,17 @@ public class DiceTest {
 	@Test(expected=RuntimeException.class)
 	public void testDiceValueLessThan1() 
 	{
-		//need to finish
+		int predictablRoll [] = {0} ;
+		Die die = new Die(predictablRoll);
+		die.roll();
 
 	}
 	
 	@Test(expected=RuntimeException.class)
 	public void testDiceValueMoreThan6() 
 	{
-		//need to finish
+		int predictablRoll [] = {7} ;
+		Die die = new Die(predictablRoll);
+		die.roll();
 	}
 }
