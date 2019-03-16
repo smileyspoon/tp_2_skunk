@@ -68,18 +68,20 @@ public class DiceTest {
 	@Test(expected=RuntimeException.class)
 	public void testDiceValueLessThan1() 
 	{
-		int predictablRoll [] = {0} ;
-		Die die = new Die(predictablRoll);
-		die.roll();
+		int predictablRoll1 [] = {0} ;
+		int predictablRoll2 [] = {3} ;
+		dice = new Dice(predictablRoll1, predictablRoll2);
+		dice.roll();
 
 	}
 	
 	@Test(expected=RuntimeException.class)
 	public void testDiceValueMoreThan6() 
 	{
-		int predictablRoll [] = {7} ;
-		Die die = new Die(predictablRoll);
-		die.roll();
+		int predictablRoll1 [] = {7} ;
+		int predictablRoll2 [] = {90} ;
+		dice = new Dice(predictablRoll1, predictablRoll2);
+		dice.roll();
 	}
 	
 	@Test
