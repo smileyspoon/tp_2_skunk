@@ -90,7 +90,9 @@ public class DiceTest {
 		//created new string object
 		String value = new String();
 		String expected = ""; //expected string value
+		dice.roll();
+		assertEquals("Dice with last roll: 3 => 1 + 2",dice.toString());
 		assertEquals(expected, value.toString());
-	}
+	} 
 	
 }
