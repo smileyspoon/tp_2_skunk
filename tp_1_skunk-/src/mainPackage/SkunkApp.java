@@ -1,31 +1,21 @@
 package mainPackage;
-import static org.junit.Assert.assertEquals;
 
+import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
 public class SkunkApp {
 
+	private static int numberOfPlayer;
+	
 	public static void main(String[] args) {
 		
-		Dice dice1 = new Dice();	
-		dice1.roll();
-		StdOut.println("This is a random roll: " + dice1.getLastRoll());
+		StdOut.println("Welcome to the Skunk game!!!");
+		StdOut.println("How many players");
 		
-		int predictablRoll [] = {1,2,3,4} ;
-		int predictablRoll2 [] = {1,2,3,4} ;
-		Dice dice2 = new Dice(predictablRoll, predictablRoll2);
+		numberOfPlayer = StdIn.readInt();
 		
-		dice2.roll();
-		StdOut.println("This is a  predictable roll 1: " + dice2.getLastRoll());
+		Session session = new Session (numberOfPlayer);
 		
-		dice2.roll();
-		StdOut.println("This is a predictable rol 2: " + dice2.getLastRoll());
-		
-		dice2.roll();
-		StdOut.println("This is a predictable rol 3: " + dice2.getLastRoll());
-		
-		dice2.roll();
-		StdOut.println("This is a predictable rol 4: " + dice2.getLastRoll());
 
 }
 }
