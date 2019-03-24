@@ -10,7 +10,10 @@ public class Player {
 	Player (int playerNumber ) {
 		
 		StdOut.println("What is player " + playerNumber +"'s name?");
-		name = StdIn.readLine();
+		
+		StdIn.readLine();
+		name = StdIn.readString();
+
 		
 		this.setName(name);
 		
