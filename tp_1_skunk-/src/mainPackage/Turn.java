@@ -8,7 +8,7 @@ public class Turn {
 	private int counter =0;
 	private boolean turnOver = false;
 	private LinkedList <Dice> dice = new LinkedList <Dice>();
-	private int totalDiceRoll =0;
+	private int turnTotal =0;
 	private String question;
 	
 	Turn () {
@@ -39,12 +39,28 @@ public class Turn {
 			
 			StdOut.println ("Roll " + (i+1) + ":  " + dice.get(i).getLastRoll());
 			
-			totalDiceRoll = totalDiceRoll+dice.get(i).getLastRoll();
+			turnTotal = turnTotal+dice.get(i).getLastRoll();
 		}
 		
-		StdOut.println("Your dice roll total is:  "+  totalDiceRoll);
+		StdOut.println("Your dice roll total is:  "+  turnTotal);
+		
+		
+		
 
 }
+	
+	
+	public int getTurnTotal () {
+		
+		return turnTotal;
+	}
+	
+	public LinkedList<Dice> getDice() {
+		
+		return dice;
+	}
+	
+	
 	
 }
 
