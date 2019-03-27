@@ -45,6 +45,16 @@ public class Dice
 	{
 		return this.lastRoll;
 	}
+	
+	public int getDie1()
+	{
+		return die1.getLastRoll();
+	}
+	
+	public int getDie2()
+	{
+		return die2.getLastRoll();
+	}
 
 	public void roll()
 	{

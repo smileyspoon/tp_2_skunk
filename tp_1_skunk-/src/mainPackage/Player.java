@@ -10,46 +10,45 @@ public class Player {
 	private LinkedList <Turn> turn = new LinkedList<Turn>();
 	
 	private String name;
-	private int score;
+	private int score;	
 	
-	
-	Player (int playerNumber ) {
-		
+	Player (int playerNumber ) 
+	{		
 		StdOut.println("What is player " + playerNumber +"'s name?");
 		
 		StdIn.readLine();
 		name = StdIn.readString();
-
 		
-		this.setName(name);
-		
+		this.setName(name);		
 	}
 	
-	public void newTurn () {
-		
+	public void newTurn () 
+	{		
 		turn.add(new Turn());
 	}
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
-	}
-	
+	}	
 
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
 
-	public int getScore() {
+	public int getScore() 
+	{
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(int score) 
+	{
 		this.score = score;
 	}
 	
-	public int getTurnNumber () {
-		
+	public int getTurnNumber () 
+	{		
 		return (turn.size()+1);
 	}
-
 }
