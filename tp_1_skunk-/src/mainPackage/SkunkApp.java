@@ -1,13 +1,14 @@
 package mainPackage;
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
-
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
 public class SkunkApp 
 {
 	private static int numberOfPlayer = 1;
+	private static String question;
 		
 	public static void main(String[] args) 
 	{	
@@ -21,8 +22,19 @@ public class SkunkApp
 		// Query user for amount of players
 		do {			
 			StdOut.println("How many players?");			
-			numberOfPlayer = StdIn.readInt();
 			
+			try 
+			{
+				numberOfPlayer = StdIn.readInt();
+			}
+			
+			catch (InputMismatchException e)
+			
+			{
+				
+				StdOut.println("Invalid input");
+				
+			}
 			if(numberOfPlayer < 2)
 			{
 				StdOut.println("At least 2 players are required to start a game.\n");
@@ -46,13 +58,28 @@ public class SkunkApp
 				player.get(i).newTurn();
 			}
 			
-			StdOut.println("Continue playing the game? Y/N");			
-			if (StdIn.readString().matches("N|n"))
-			{				
-				gameCompleted = true;
-			}
-		}
 	
+			
+			
+				while (!gameCompleted)
+				{
+				
+					do{					
+						StdOut.println("Continue playing the game? Y/N");
+						question = StdIn.readString();
+					} while (!question.matches("N|n|Y|y")); 
+					
+					if (question.equals("N") || question.equals("n"))
+					{
+						gameCompleted = true;
+					}
+					
+				}
+
+			
+			}
+		
+		
 		StdOut.println("Game is over.");
 
 	}
