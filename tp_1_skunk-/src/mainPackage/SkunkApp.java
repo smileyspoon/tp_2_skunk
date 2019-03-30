@@ -11,7 +11,7 @@ public class SkunkApp
 	private static int numberOfPlayer = 1;
 	private static String question;
 		
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception 
 	{	
 		LinkedList <Player> player = new LinkedList<Player>();
 		boolean gameCompleted = false;
@@ -56,7 +56,7 @@ public class SkunkApp
 			for (int i = 0; i < numberOfPlayer; i++) 
 			{
 				StdOut.println("\n******************************");
-				StdOut.println("It's turn " + player.get(i).getTurnNumber() + " for player " + player.get(i).getName() + ".\n");
+				StdOut.println("It's turn " + player.get(i).getGame().getRound(0).getT + " for player " + player.get(i).getName() + ".\n");
 				player.get(i).newTurn();
 			}
 			

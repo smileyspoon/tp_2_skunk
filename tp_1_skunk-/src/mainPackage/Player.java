@@ -6,49 +6,46 @@ import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
 public class Player {
-	
-	private LinkedList <Turn> turn = new LinkedList<Turn>();
-	
+
+	private Game game;
+
 	private String name;
-	private int score;	
-	
-	Player (int playerNumber ) 
-	{		
-		StdOut.println("What is player " + playerNumber +"'s name?");
-		
+	private int score;
+
+	Player(int playerNumber) {
+		StdOut.println("What is player " + playerNumber + "'s name?");
+
 		StdIn.readLine();
 		name = StdIn.readString();
-		
-		this.setName(name);		
-	}
-	
-	public void newTurn () 
-	{		
-		turn.add(new Turn());
+
+		this.setName(name);
 	}
 
-	public String getName() 
-	{
+
+	public String getName() {
 		return name;
-	}	
+	}
 
-	public void setName(String name) 
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getScore() 
-	{
+	public int getScore() {
 		return score;
 	}
 
-	public void setScore(int score) 
-	{
+	public void setScore(int score) {
 		this.score = score;
 	}
-	
-	public int getTurnNumber () 
-	{		
-		return (turn.size()+1);
+
+
+	public Game getGame() {
+		return game;
 	}
+
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
 }
