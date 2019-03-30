@@ -1,5 +1,6 @@
 package mainPackage;
 import java.util.LinkedList;
+
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
@@ -76,5 +77,6 @@ public class Turn
 	{		
 		return dice;
 	}
+
 }
 

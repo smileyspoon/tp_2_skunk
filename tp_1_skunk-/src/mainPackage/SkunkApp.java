@@ -2,6 +2,7 @@ package mainPackage;
 
 import java.util.InputMismatchException;
 import java.util.LinkedList;
+
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
@@ -18,6 +19,7 @@ public class SkunkApp
 		StdOut.println("**********************************");
 		StdOut.println("** Welcome to the Skunk game!!! **");
 		StdOut.println("**********************************\n");
+		
 		
 		// Query user for amount of players
 		do {			
@@ -69,18 +71,17 @@ public class SkunkApp
 						question = StdIn.readString();
 					} while (!question.matches("N|n|Y|y")); 
 					
-					if (question.equals("N") || question.equals("n"))
+					if (question.equals("Y") || question.equals("y"))
 					{
-						gameCompleted = true;
-					}
-					
+						main(null);
+					} else
+					gameCompleted = true;
+					StdOut.println("Game is over.");
 				}
 
 			
 			}
-		
-		
-		StdOut.println("Game is over.");
 
 	}
+	
 }
