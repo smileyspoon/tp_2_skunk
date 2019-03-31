@@ -3,62 +3,86 @@ package mainPackage;
 public class Roll {
 
 	/*
-	 * 1+1 Double Skunk: double skunk lose roll, lose turn score, lose roll score
+	 * 1+1 Double Skunk: double skunk lose turn and accumulated round score, lose 4 chips
 	 * 
-	 * 1+2, 2+1 Skunk Duce: lose roll score
+	 * 1+2, 2+1 Skunk Duce: lose turn, lose current turn score, lose 2 chips
 	 * 
-	 * 1+ * Regular Skunk: lose roll;
+	 * 1+ * Regular Skunk: lose turn, lose current turn score, lose 1 chip
 	 * 
 	 */
 
 	private String rollResult="";
-	private boolean skunk = false;
+
 	
-	Roll(Dice dice) {
+	public Roll(Dice dice) {
 		
-		if (skunk==false) {
+
+		if (doubleSkunk(dice) != null) {
 			
 			setRollResult(doubleSkunk(dice));
-			skunk = true;
-			
 		}
 		
-		else if (skunk==false) {
+		else if (skunkDuce(dice) != null) {
 			
 			setRollResult(skunkDuce(dice));
-			skunk = true;
 		}
 		
-		else if (skunk == false) {
+		else if (regularSkunk(dice)!= null) {
+			
 			
 			setRollResult(regularSkunk(dice));
-			skunk = true;
 		}
 		
 		else {
-			
+	
 			setRollResult("Not Skunk");
 		}
+			
+		
 		
 
 	}
 
 	public String doubleSkunk(Dice dice) {
+		
+		if (dice.getDie1() ==1 && dice.getDie2() ==1) {
+
 
 		return "Double Skunk";
+		}
+		
+		else {
+			return null;
+		}
 
 	}
 
 	public String skunkDuce(Dice dice) {
+		
+		if ((dice.getDie1() ==1 && dice.getDie2() ==2) || (dice.getDie1() ==2 && dice.getDie2() ==1)) {
 
-		return "Skunk Duce";
+
+			return "Skunk Duce";
+		}
+		
+		else {
+			return null;
+		}
 
 	}
 
 	public String regularSkunk(Dice dice) {
 
-		return "Regular Skunk";
+		if (dice.getDie1() ==1 || dice.getDie2() ==1) {
 
+			return "Regular Skunk";
+
+		}
+		
+		else {
+			
+			return null;
+		}
 	}
 
 	public String getRollResult() {
@@ -68,5 +92,9 @@ public class Roll {
 	private void setRollResult(String rollResult) {
 		this.rollResult = rollResult;
 	}
+	
 
-}
+		
+	}
+
+

@@ -28,8 +28,8 @@ public class TurnView {
 		StdOut.println("Lose turn score.");
 	}
 
-	public void playAgainQuestion() {
-		StdOut.println("Would you like to go again? Y/N");
+	public void rollQuestion() {
+		StdOut.println("Would you like to roll? Y/N");
 	}
 
 	public void rollSummary(LinkedList<Dice> dice, int counter, int turnTotal) {

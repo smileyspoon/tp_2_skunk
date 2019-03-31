@@ -15,12 +15,13 @@ public class TurnController {
 	private boolean turnOver = false;
 	private String question;
 	private int turnTotal = 0;
-	
-	TurnController () {
-		
+
+	TurnController() {
+
 	}
 
-	TurnController(Turn turn) throws Exception{
+	//this is the main method for this class.  has all the flow from start to finish
+	public void startTurn(Turn turn) throws Exception {
 
 		this.turn = turn;
 		dice = turn.getDice();
@@ -37,6 +38,7 @@ public class TurnController {
 			checkSkunk(roll.getRollResult());
 
 			counter++;
+
 		}
 
 		// Print out roll summary for player's turn
@@ -50,40 +52,54 @@ public class TurnController {
 		dice.get(counter).roll();
 	}
 
+	
 	public void checkSkunk(String rollResult) throws Exception {
-		// We need to give the player the option to NOT roll the first time
+
 
 		if (rollResult.equals("Double Skunk")) {
-			// Lose accumulated score
+			// Lose accumulated score, turn is over, and turns the doubleSkunk flag to be true
 			turnView.loseAccumulatedScore();
-
 			turnOver = true;
 			turnTotal = 0;
-		} else if (rollResult.equals("Skunk Duce") || rollResult.equals("Regular Skunk")) {
-			// Lose turn score
+			setTotalScore();
+			turn.setDoubleSkunk(true);;
+		} else if (rollResult.equals("Skunk Duce")) {
+			// Lose turn score, lose turn
+			//need logic for losing 2 chips
 			turnView.loseTurnScore();
-
 			turnOver = true;
 			turnTotal = 0;
-		} else if (rollResult.equals("Not Sknuk")) {
+			setTotalScore();
+		} else if (rollResult.equals("Regular Skunk")) {
+			// Lose turn score, lose turn
+			//need logic for losing 1 chip
+			turnView.loseTurnScore();
+			turnOver = true;
+			turnTotal = 0;
+			setTotalScore();
+		} else if (rollResult.equals("Not Skunk")) {
 			// No skunks. Continue turn.
-			// Error handling for invalid responses
+			
 
+			addScore(dice.get(counter).getLastRoll());
+			setTotalScore();
 			rollQuestion();
 
 		}
 
 		else {
 
+			//this is my not so great attempt for error handling
 			throw new Exception("This is messed up ");
 		}
 	}
 
+	
 	private void rollQuestion() {
 
 		do {
 
-			turnView.playAgainQuestion();
+			turnView.rollQuestion();
 
 			question = StdIn.readString();
 		} while (!question.matches("N|n|Y|y"));
@@ -91,8 +107,15 @@ public class TurnController {
 		if (question.equals("N") || question.equals("n")) {
 			turnOver = true;
 		}
-		turnTotal = turnTotal + dice.get(counter).getLastRoll();
 
 	}
 
+	private void addScore(int score) {
+		turnTotal = turnTotal + score;
+	}
+
+	private void setTotalScore() {
+		turn.setTurnTotal(turnTotal);
+	}
+	
 }

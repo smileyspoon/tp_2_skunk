@@ -12,13 +12,21 @@ public class Player {
 	private String name;
 	private int score;
 
-	Player(int playerNumber) {
+	Player(int playerNumber) throws Exception {
 		StdOut.println("What is player " + playerNumber + "'s name?");
 
 		StdIn.readLine();
 		name = StdIn.readString();
 
 		this.setName(name);
+		newGame();
+		
+		
+	}
+	
+	public void newGame () throws Exception {
+		
+		game = new Game();
 	}
 
 
