@@ -1,8 +1,6 @@
 package mainPackage;
 
 import java.util.LinkedList;
-import edu.princeton.cs.introcs.StdIn;
-import edu.princeton.cs.introcs.StdOut;
 
 //turn class only holds the turnTotal dice amount you accumulated, linked list of the dices rolled for the turn
 //and also a flag called doubleSkunk to see during this turn a doubleSkunk was rolled
@@ -13,8 +11,13 @@ public class Turn {
 	private int turnTotal = 0;
 	private LinkedList<Dice> dice = new LinkedList<Dice>();
 	private boolean doubleSkunk = false;
+	private Roll lastRoll;
 
 	Turn() {
+		this.turnTotal =0;
+		this.lastRoll = new Roll();
+		LinkedList<Dice> dice = new LinkedList<Dice>();
+		this.doubleSkunk = false;
 
 	}
 
@@ -37,6 +40,11 @@ public class Turn {
 
 	public void setDoubleSkunk(boolean roundTotalZero) {
 		this.doubleSkunk = roundTotalZero;
+	}
+	
+	@Override
+	public String toString() {
+		return "Die 1 =>" + this.getDice() + " and Die 2 =>" + this.getDice();
 	}
 	
 
