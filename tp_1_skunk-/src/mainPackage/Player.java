@@ -1,7 +1,5 @@
 package mainPackage;
 
-import java.util.LinkedList;
-
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
@@ -22,6 +20,10 @@ public class Player {
 		newGame();
 		
 		
+	}
+	
+	public void Player() {
+		//
 	}
 	
 	public void newGame () throws Exception {
