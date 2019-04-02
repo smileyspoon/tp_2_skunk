@@ -11,13 +11,8 @@ public class Turn {
 	private int turnTotal = 0;
 	private LinkedList<Dice> dice = new LinkedList<Dice>();
 	private boolean doubleSkunk = false;
-	private Roll lastRoll;
 
 	Turn() {
-		this.turnTotal =0;
-		this.lastRoll = new Roll();
-		LinkedList<Dice> dice = new LinkedList<Dice>();
-		this.doubleSkunk = false;
 
 	}
 
@@ -40,11 +35,6 @@ public class Turn {
 
 	public void setDoubleSkunk(boolean roundTotalZero) {
 		this.doubleSkunk = roundTotalZero;
-	}
-	
-	@Override
-	public String toString() {
-		return "Die 1 =>" + this.getDice() + " and Die 2 =>" + this.getDice();
 	}
 	
 
