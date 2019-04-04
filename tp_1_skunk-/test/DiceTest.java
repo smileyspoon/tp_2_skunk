@@ -95,4 +95,30 @@ public class DiceTest {
 		assertEquals(expected, value.toString());
 	} 
 	
+	@Test
+	public void randomTest() {
+	  dice = new Dice();
+	  dice.roll();
+	  
+	  assertTrue("Error, dice value is too high", dice.getLastRoll() <= 12);
+	  assertTrue("Error, dice value is too low",  dice.getLastRoll() >= 2);
+	}
+	
+	@Test
+	public void getDie1Test() {
+	  dice = new Dice();
+	  dice.roll();
+	  
+	  assertTrue("Error, die value is too high", dice.getDie1() <= 6);
+	  assertTrue("Error, die value is too low",  dice.getDie1() >= 1);
+	}
+	
+	@Test
+	public void getDie2Test() {
+	  dice = new Dice();
+	  dice.roll();
+	  
+	  assertTrue("Error, die value is too high", dice.getDie2() <= 6);
+	  assertTrue("Error, die value is too low",  dice.getDie2() >= 1);
+	}
 }
