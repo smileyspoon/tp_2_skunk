@@ -29,8 +29,7 @@ public class playerTest {
 	}
 
 	@Test
-	public void setNameTest() {
-		System.out.println("setNameTest");
+	public void setNameTest() throws Exception {
 		String name ="Sheila";
 		Player player = new Player();
 		player.setName(name);
@@ -38,39 +37,35 @@ public class playerTest {
 	}
 	
 	@Test
-	public void getNameTest() {
-		System.out.println("getNameTest");
+	public void getNameTest() throws Exception {
 		Player player = new Player();
 		player.setName("test");
-		assertTrue(player.getName()== "test");
+		assertEquals("test", player.getName());
 	}
 
 
 	@Test
-	public void getScoreTest() {
+	public void getScoreTest() throws Exception {
 		Player player = new Player();
 		player.setScore(2);
-		assertTrue(player.getScore()== 2);
-		
-		
+		assertEquals(player.getScore(), 2);		
 	}
 	
 	@Test
-	public void setScoreTest() {
+	public void setScoreTest() throws Exception {
 		Player player = new Player();
 		player.setScore(5);
-		assertTrue(player.getScore()==5);
-		
+		assertEquals(player.getScore(), 5);		
 	}
 	
 	@Test
-	public void getGame() {
+	public void setGame_getGame() throws Exception {
+		Game game = new Game();
+		Player player = new Player();
+		player.setGame(game);
 		
-	}
-	
-	@Test
-	public void setGame() {
-		
+		// This checks to see if we are getting what we are setting
+		assertEquals(game, player.getGame());
 	}
 
 }
