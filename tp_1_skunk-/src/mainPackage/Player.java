@@ -22,6 +22,18 @@ public class Player {
 		
 	}
 	
+	public Player(int playerNumber) throws Exception {
+		StdOut.println("What is player " + playerNumber + "'s name?");
+
+		StdIn.readLine();
+		name = StdIn.readString();
+
+		this.setName(name);
+		newGame();
+		
+		
+	}
+	
 	public void Player() {
 		//
 	}

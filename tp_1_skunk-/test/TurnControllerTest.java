@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import mainPackage.Dice;
+import mainPackage.Die;
 import mainPackage.Round;
 import mainPackage.Turn;
 import mainPackage.TurnController;
@@ -34,10 +35,22 @@ public class TurnControllerTest {
 	public void tearDown() throws Exception {
 	}
 	
-	@Test public void checkSkunkTest () throws Exception {
+	@Test
+	//enter Y
+	public void startTurnTest () throws Exception {
+		
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
-		turncontroller.checkSkunk("Skunk Duce");
+		turncontroller.startTurn(turn);
+		assertEquals(turn.getTurnTotal(), turncontroller.getTotalScore());
+		
+	}
+	
+	@Test 
+	public void checkSkunkTest () throws Exception {
+		Turn turn = new Turn ();
+		TurnController turncontroller = new TurnController( turn);
+		turncontroller.checkSkunk("Double Skunk");
 		assertEquals(0, turncontroller.getTotalScore());
 		
 	}
@@ -46,10 +59,46 @@ public class TurnControllerTest {
 	public void checkSkunkTest2 () throws Exception {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
-		turncontroller.checkSkunk("Double Skunk");
+		turncontroller.checkSkunk("Skunk Duce");
 		assertEquals(0, turncontroller.getTotalScore());
 		
 	}
+	
+	@Test 
+	public void checkSkunkTest3 () throws Exception {
+		Turn turn = new Turn ();
+		TurnController turncontroller = new TurnController( turn);
+		turncontroller.checkSkunk("Regular Skunk");
+		assertEquals(0, turncontroller.getTotalScore());
+		
+	}
+	
+	//Enter 0
+	@Test
+	public void checkSkunkTest4 () throws Exception {
+		Turn turn = new Turn ();
+		TurnController turncontroller = new TurnController( turn);
+		turncontroller.getDice().add(new Dice());
+		turncontroller.getDice().get(0).roll();
+		
+		turncontroller.checkSkunk("Not Skunk");
+		assertEquals(turncontroller.getDice().get(0).getLastRoll(), turncontroller.getTotalScore());
+		
+	}
+	
+	@Test
+	(expected=Exception.class)
+	public void checkSkunkTest5() throws Exception 
+	{
+		Turn turn = new Turn ();
+		TurnController turncontroller = new TurnController( turn);
+		turncontroller.checkSkunk("asdf");
+		
+	}
+	
+	
+	
+
 
 	@Test
 	public void rollnewDiceTest() {
@@ -72,9 +121,7 @@ public class TurnControllerTest {
 	@Test
 	public void addScoreTest() {
 		TurnController turnController = new TurnController();
-		int score1 = 14;
-		int turnTotal = 1;
-		int result = turnTotal + score1;
+		turnController.addScore(15);
 		assertEquals(15, 15);
 		//it's not testing the addScore because it's not calling it
 	}

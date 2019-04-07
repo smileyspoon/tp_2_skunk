@@ -132,4 +132,9 @@ public class TurnController {
 		return turnTotal;
 	}
 	
+	public LinkedList<Dice> getDice () {
+		
+		return dice;
+	}
+	
 }
