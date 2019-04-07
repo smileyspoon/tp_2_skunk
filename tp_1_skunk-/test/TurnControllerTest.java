@@ -14,6 +14,9 @@ import mainPackage.Turn;
 import mainPackage.TurnController;
 
 public class TurnControllerTest {
+	//PLEASE READ THIS BEFORE RUNNING TEST
+	//Enter Y for first prompt and N for second prompt
+	
 	
 	TurnController turn;
 	private Dice dice;
