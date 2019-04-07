@@ -76,4 +76,5 @@ public class Dice
 		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
 	}
 
+	
 }

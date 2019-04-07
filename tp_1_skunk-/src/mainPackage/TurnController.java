@@ -15,7 +15,8 @@ public class TurnController {
 	private String question;
 	private int turnTotal = 0;
 
-	TurnController() {
+	public TurnController() {
+	
 
 	}
 
@@ -45,7 +46,7 @@ public class TurnController {
 
 	}
 
-	private void rollNewDice() {
+	public void rollNewDice() {
 
 		dice.add(new Dice());
 		dice.get(counter).roll();
@@ -109,7 +110,7 @@ public class TurnController {
 
 	}
 
-	private void addScore(int score) {
+	public void addScore(int score) {
 		turnTotal = turnTotal + score;
 	}
 
