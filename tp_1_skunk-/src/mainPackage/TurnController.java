@@ -19,7 +19,16 @@ public class TurnController {
 	
 
 	}
+	
+	//this is for tesing purposes 
+	public TurnController(Turn turn) {
+		
+		this.turn =turn;
+		dice = new LinkedList<Dice>();
 
+	}
+	
+	
 	//this is the main method for this class.  has all the flow from start to finish
 	public void startTurn(Turn turn) throws Exception {
 
@@ -116,6 +125,11 @@ public class TurnController {
 
 	private void setTotalScore() {
 		turn.setTurnTotal(turnTotal);
+	}
+	
+	public int getTotalScore() {
+		
+		return turnTotal;
 	}
 	
 }

@@ -12,7 +12,7 @@ public class Turn {
 	public LinkedList<Dice> dice = new LinkedList<Dice>();
 	public boolean doubleSkunk = false;
 
-	Turn() {
+	public Turn() {
 
 	}
 

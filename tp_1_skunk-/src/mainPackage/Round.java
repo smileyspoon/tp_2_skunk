@@ -7,7 +7,7 @@ public class Round {
 	private LinkedList<Turn> turn = new LinkedList<Turn>();
 	private int roundTotal = 0;
 
-	Round() throws Exception {
+	public Round() throws Exception {
 		newTurn();
 
 	}

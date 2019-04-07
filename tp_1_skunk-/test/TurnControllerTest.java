@@ -1,11 +1,15 @@
 import static org.junit.Assert.assertEquals;
 
+import java.util.LinkedList;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
 import mainPackage.Dice;
+import mainPackage.Round;
+import mainPackage.Turn;
 import mainPackage.TurnController;
 
 public class TurnControllerTest {
@@ -29,6 +33,23 @@ public class TurnControllerTest {
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	@Test public void checkSkunkTest () throws Exception {
+		Turn turn = new Turn ();
+		TurnController turncontroller = new TurnController( turn);
+		turncontroller.checkSkunk("Skunk Duce");
+		assertEquals(0, turncontroller.getTotalScore());
+		
+	}
+	
+	@Test 
+	public void checkSkunkTest2 () throws Exception {
+		Turn turn = new Turn ();
+		TurnController turncontroller = new TurnController( turn);
+		turncontroller.checkSkunk("Double Skunk");
+		assertEquals(0, turncontroller.getTotalScore());
+		
+	}
 
 	@Test
 	public void rollnewDiceTest() {
@@ -39,6 +60,12 @@ public class TurnControllerTest {
 //		
 //		TurnController.rollNewDice();
 //		assertEquals("Checking",3);
+		Turn turn = new Turn ();
+		
+		TurnController turncontroller = new TurnController( turn);
+		
+		turncontroller.rollNewDice();
+		assertEquals(1, turncontroller.dice.size());
 		
 	}
 	
@@ -50,6 +77,26 @@ public class TurnControllerTest {
 		int result = turnTotal + score1;
 		assertEquals(15, 15);
 		//it's not testing the addScore because it's not calling it
+	}
+	
+	
+	//Here is the example we talked about
+	@Test
+	public void exampleForLinkedList() throws Exception {
+	LinkedList<Dice> dice = new LinkedList<Dice>();	
+	
+	dice.add(new Dice ());
+	dice.add(new Dice ());
+	
+	dice.get(0).roll();
+	dice.get(1).roll();
+	
+	LinkedList<Round> round = new LinkedList<Round>();
+	
+	round.add(new Round());
+
+		
+		
 	}
 
 }
