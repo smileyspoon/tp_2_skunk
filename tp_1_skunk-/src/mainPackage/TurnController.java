@@ -3,13 +3,12 @@ package mainPackage;
 import java.util.LinkedList;
 
 import edu.princeton.cs.introcs.StdIn;
-import edu.princeton.cs.introcs.StdOut;
 
 public class TurnController {
 
-	private Turn turn;
-	private TurnView turnView = new TurnView();
-	private LinkedList<Dice> dice;
+	public Turn turn;
+	public TurnView turnView = new TurnView();
+	public LinkedList<Dice> dice;
 
 	private int counter = 0;
 	private boolean turnOver = false;

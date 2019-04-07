@@ -5,9 +5,9 @@ import java.util.LinkedList;
 //no chips yet
 public class Game {
 	
-	private LinkedList<Round> round = new LinkedList<Round>();
+	public LinkedList<Round> round = new LinkedList<Round>();
 	
-	Game () throws Exception {
+	public Game () throws Exception {
 		
 		newRound();
 		
@@ -36,4 +36,5 @@ public class Game {
 		return getCurrentRound().getCurrentTurn();
 	}
 
+	
 }

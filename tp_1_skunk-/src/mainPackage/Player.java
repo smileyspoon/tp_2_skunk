@@ -5,12 +5,12 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class Player {
 
-	private Game game;
+	Game game;
 
 	private String name;
 	private int score;
 
-	Player(int playerNumber) throws Exception {
+	public Player(int playerNumber, String name) throws Exception {
 		StdOut.println("What is player " + playerNumber + "'s name?");
 
 		StdIn.readLine();

@@ -1,11 +1,10 @@
-import static org.junit.Assert.*;
-import mainPackage.*;
-import org.junit.After;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import junit.framework.Assert;
+import mainPackage.Dice;
+import mainPackage.Roll;
 
 public class RollTest {
 
@@ -21,14 +20,7 @@ public class RollTest {
 		
 	}
 
-	@After
-	public void tearDown() throws Exception 
-	{
-	}
-
-
-	
-	@Test
+		@Test
 	public void doubleSkunk() 
 	{
 		dice.roll();
