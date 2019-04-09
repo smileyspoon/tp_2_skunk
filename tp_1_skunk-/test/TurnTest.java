@@ -1,13 +1,17 @@
+import static org.junit.Assert.assertTrue;
+
 import java.util.LinkedList;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import mainPackage.Dice;
+import mainPackage.Die;
 import mainPackage.Round;
 import mainPackage.Turn;
 
 public class TurnTest {
+	public Die die;
 
 	public Turn turn;
 	public int turnTotal = 0;
@@ -29,10 +33,14 @@ public class TurnTest {
 		turn.getTurnTotal();
 	}
 	@Test
-	public void getDoubleSkunk() {
-		
-		
+	public void getDoubleSkunk() throws Exception {
+	
+			Die die1 = new Die(new int[] { 1 });
+			Die die2 = new Die(new int[] {2});
+			assertTrue("double skunk not detected", turn.getDoubleSknuk());
+
 	}
+		
 	@Test
 	public void getDiceTest() throws Exception {
 		LinkedList<Dice> dice = new LinkedList<Dice>();	
