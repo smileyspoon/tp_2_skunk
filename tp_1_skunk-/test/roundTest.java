@@ -1,32 +1,45 @@
-import static org.junit.Assert.*;
+import java.util.LinkedList;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
+import mainPackage.Round;
+import mainPackage.Turn;
+
 public class roundTest {
+	
+	Round round;
+	LinkedList<Turn> turn = new LinkedList<Turn>();
+	public int roundTotal = 0;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
+	
 	@Before
 	public void setUp() throws Exception {
+		this.round = new Round();
 	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
+	
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void getRoundTotalTest() throws Exception {
+		Round round = new Round();
+		round.getRoundTotal();
+	}
+	
+	@Test
+	public void getTurnNumberTest() {
+		LinkedList<Turn> turn = new LinkedList<Turn>();
+		roundTotal = 0;
+		round.getTurnNumber();
+	}
+	@Test
+	public void getTurnTest() throws Exception {
+		LinkedList<Turn> turn = new LinkedList<Turn>();
+		round.getTurn();
+	}
+	
+	public void newTurnTest() {
+		LinkedList<Turn> turn = new LinkedList<Turn>();
+		
 	}
 
 }
