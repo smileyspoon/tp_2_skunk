@@ -8,40 +8,21 @@ import mainPackage.Game;
 import mainPackage.Round;
 
 public class gameTest {
-	LinkedList<Round> round;	
-	Game roundLL;
+	
 	Game game;
+	public LinkedList<Round> round = new LinkedList<Round>();
 	
 	@Before
-	public void setUp() throws Exception
-	{
-		this.game = new Game();
+	public void setUp() throws Exception {
+
 	}
 
 	@Test
-	public void roundLinkedListTest() {
-		Game roundLL = new Game();
-		assertTrue(roundLL.isEmpty());
+	public void test() throws Exception {
+		game = new Game();
 		
-	}
-	
-	@Test
-	public void newRoundTest() {
-	//Need to complete
-		
-	}
-	
-	@Test
-	public void getRoundTest()
-	{
-		System.out.println("getRoundTest");
-		LinkedList<Round> round = new LinkedList<Round>();
-		round.add("Hello");
-		round.add(1);
-		round.add("Sheila");
-		round.add(2);
-		
-		assertEquals(,"1");
+		game.getCurrentRound();		
+		game.getCurrentTurn();		
 	}
 
 }

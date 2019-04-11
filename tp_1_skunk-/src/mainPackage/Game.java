@@ -7,23 +7,8 @@ public class Game {
 	
 	public LinkedList<Round> round = new LinkedList<Round>();
 	
-	public Game () throws Exception {
-		
-		newRound();
-		
-	}
-	
-	public void newRound () throws Exception {
-		
+	public Game () throws Exception {		
 		round.add(new Round());
-	}
-
-	public LinkedList<Round> getRound() {
-		return round;
-	}
-
-	public void setRound(LinkedList<Round> round) {
-		this.round = round;
 	}
 	
 	public Round getCurrentRound () {
@@ -34,7 +19,5 @@ public class Game {
 	public Turn getCurrentTurn() {
 		
 		return getCurrentRound().getCurrentTurn();
-	}
-
-	
+	}	
 }
