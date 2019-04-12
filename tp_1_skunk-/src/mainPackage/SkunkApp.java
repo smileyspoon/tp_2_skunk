@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
+import java.io.FileReader;
+import java.io.BufferedReader;
+
 public class SkunkApp {
 	private static int numberOfPlayer = 1;
 	private static String question;
@@ -45,6 +48,9 @@ public class SkunkApp {
 			player.add(new Player(i + 1));
 		}
 
+		// Query players for complete listing of rules
+		rules();
+		
 		while (!gameCompleted) {
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
@@ -98,6 +104,18 @@ public class SkunkApp {
 
 		}
 
+	}
+	
+	private static void rules() throws Exception {
+		StdOut.println("Would you like to view the rules for the game of Skunk?");
+		
+		if (StdIn.readString().matches("Y|y")) {
+			BufferedReader br = new BufferedReader(new FileReader("resources/rules.txt"));
+			String line = null;
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+		}
 	}
 
 }
