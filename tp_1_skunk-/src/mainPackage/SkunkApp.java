@@ -28,19 +28,13 @@ public class SkunkApp {
 
 			try {
 				numberOfPlayer = StdIn.readInt();
-			}
-
-			catch (InputMismatchException e)
-
-			{
-
+			} catch (InputMismatchException e) {
 				StdOut.println("Invalid input");
-
 			}
+			
 			if (numberOfPlayer < 2) {
 				StdOut.println("At least 2 players are required to start a game.\n");
 			}
-
 		} while (numberOfPlayer < 2);
 
 		// Enter name for each player
@@ -51,42 +45,36 @@ public class SkunkApp {
 		// Query players for complete listing of rules
 		rules();
 		
+		// This block is for 1 game of multiple rounds
+		// After 1 player gets to 100 every other player gets one more turn to pass them
 		while (!gameCompleted) {
+			// check to see if a player is over 100
+			for (int i = 0; i < numberOfPlayer; i++) {
+				if (player.get(i).getGame().getCurrentRound().getRoundTotal() >= 20) {
+					StdOut.println(player.get(i).getName() + " has scored " + player.get(i).getGame().getCurrentRound().getRoundTotal() + " points!");
+					StdOut.println("All players get one more turn to score more than " + player.get(i).getName());	
+				}				
+			}
+			
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
-				StdOut.println("\n******************************");
-				StdOut.println("Hello " + player.get(i).getName());
-				StdOut.println("It's turn " + player.get(i).getGame().getCurrentRound().getTurnNumber() + ".\n");
-				TurnController turnController = new TurnController();
-				turnController.startTurn(player.get(i).getGame().getCurrentTurn());
-			}
-
-			do {
-				StdOut.println("Continue playing the game? Y/N");
-				question = StdIn.readString();
-				if (question.matches("n|N")) {
-					gameCompleted = true;
-					roundSummary();
-					StdOut.println("Game is over.");
-
-				}
-
-				else if (question.matches("Y|y")) {
-
-					roundSummary();
-
+				if (player.get(i).getGame().getCurrentRound().getRoundTotal() < 20) {
+					StdOut.println("\n\n\n******************************");
+					StdOut.println("Hello " + player.get(i).getName());
+					StdOut.println("It's turn " + player.get(i).getGame().getCurrentRound().getTurnNumber() + ".\n");
+					TurnController turnController = new TurnController();
+					turnController.startTurn(player.get(i).getGame().getCurrentTurn());
 				} else {
-
-					StdOut.println("Please enter Y or N");
-
+					gameCompleted = true;
 				}
+			}			
 
-			}
-
-			while (!question.matches("N|n|Y|y"));
-
+			// Print player turns summary
+			roundSummary();			
 		}
-
+		
+		StdOut.println("We have a game winner!");
+		roundSummary();
 	}
 
 	public static void roundSummary() throws Exception {
@@ -107,7 +95,7 @@ public class SkunkApp {
 	}
 	
 	private static void rules() throws Exception {
-		StdOut.println("Would you like to view the rules for the game of Skunk?");
+		StdOut.println("\nWould you like to view the rules for the game of Skunk?");
 		
 		if (StdIn.readString().matches("Y|y")) {
 			BufferedReader br = new BufferedReader(new FileReader("resources/rules.txt"));
@@ -116,6 +104,9 @@ public class SkunkApp {
 				System.out.println(line);
 			}
 		}
+		
+		StdOut.println("Press any key to continue....\n");
+		System.in.read();
 	}
 
 }
