@@ -89,9 +89,7 @@ public class SkunkApp {
 			StdOut.println(player.get(i).getName() + "'s Round score is:  "
 					+ player.get(i).getGame().getCurrentRound().getRoundTotal());
 			StdOut.println("\n");
-
 		}
-
 	}
 	
 	private static void rules() throws Exception {
@@ -108,5 +106,4 @@ public class SkunkApp {
 		StdOut.println("Press any key to continue....\n");
 		System.in.read();
 	}
-
 }
