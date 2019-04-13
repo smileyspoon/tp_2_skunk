@@ -68,8 +68,8 @@ public class SkunkApp {
 					gameCompleted = true;
 				}
 			}			
-
-			// Print player turns summary
+ 
+			// Print player turns summary 
 			roundSummary();			
 		}
 		
