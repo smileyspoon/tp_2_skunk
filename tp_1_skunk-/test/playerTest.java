@@ -24,42 +24,34 @@ public class playerTest {
 
 	@Test
 	public void setNameTest() throws Exception {
+		Player player = new Player();
 		String name ="Sheila";
-		Player player = new Player(3, "Sheila");
 		player.setName(name);
-		assertEquals(player.getName(),name);
+		assertEquals(name, player.getName());
 	}
 	
-	@Test
-	public void getNameTest() throws Exception {
-		Player player = new Player(1, "Sheila");
-		player.setName("Sheila");
-		assertEquals("Sheila", player.getName());
-	}
 
 
 	@Test
 	public void getScoreTest() throws Exception {
-		Player player = new Player(3, "Jess");
-		player.setScore(2);
-		assertEquals(player.getScore(), 2);		
+		Player player = new Player();
+		player.setScore(15);
+		assertEquals(15, player.getScore());
 	}
 	
 	@Test
-	public void setScoreTest() throws Exception {
-		Player player = new Player(1, "Young");
-		player.setScore(5);
-		assertEquals(player.getScore(), 5);		
-	}
-	
-	@Test
-	public void setGame_getGame() throws Exception {
+	public void getGame() throws Exception {
+		Player player = new Player();
 		Game game = new Game();
-		Player player = new Player(1, "Louie");
+		game.getCurrentRound().newTurn();
+		game.getCurrentRound().newTurn();
 		player.setGame(game);
 		
-		// This checks to see if we are getting what we are setting
-		assertEquals(game, player.getGame());
+		assertEquals(3, player.getGame().getCurrentRound().getTurnNumber());
+		
+		
+		
+
 	}
 
 }

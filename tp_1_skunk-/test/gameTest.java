@@ -1,4 +1,9 @@
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import mainPackage.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 
 import java.util.LinkedList;
 
@@ -9,7 +14,7 @@ import mainPackage.Round;
 
 public class gameTest {
 	
-	Game game;
+
 	public LinkedList<Round> round = new LinkedList<Round>();
 	
 	@Before
@@ -18,11 +23,26 @@ public class gameTest {
 	}
 
 	@Test
-	public void test() throws Exception {
-		game = new Game();
+	public void getCurrentRoundTest() throws Exception {
+		Game game = new Game();
+		game.getCurrentRound().newTurn();
+		game.getCurrentRound().newTurn();
+
 		
-		game.getCurrentRound();		
-		game.getCurrentTurn();		
+		assertEquals(3,game.getCurrentRound().getTurn().size());
+	
 	}
+	
+	@Test
+	public void getCurrentTurnTest() throws Exception {
+		Game game = new Game();
+		game.getCurrentRound().newTurn();
+		game.getCurrentRound().newTurn();
+		game.getCurrentTurn().setTurnTotal(15);
+
+		
+		assertEquals(15,game.getCurrentTurn().getTurnTotal());
+	}
+
 
 }
