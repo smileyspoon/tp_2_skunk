@@ -9,24 +9,22 @@ public class Round {
 
 	public Round() throws Exception {
 		newTurn();
-
 	}
 
 	public void newTurn() throws Exception {
-
+		turn.add(new Turn());
+	}
+	
+	public void addTurnToRoundTotal() {
 		// adding up roundtotal from most current turn
 		if (turn.size() >= 1) {
 			roundTotal = (roundTotal + turn.getLast().getTurnTotal());
 			
-			//before adding new turn, will check if the most recent turn had a double skunk, if true
-			//will set current roundtotal to zero
+			// check if the most recent turn had a double skunk, if true will set current roundtotal to zero
 			if (turn.getLast().getDoubleSknuk() == true) {
 				roundTotal = 0;
 			}
 		}
-
-		turn.add(new Turn());
-
 	}
 
 	public int getRoundTotal() {

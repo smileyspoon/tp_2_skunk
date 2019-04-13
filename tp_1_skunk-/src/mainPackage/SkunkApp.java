@@ -10,13 +10,10 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class SkunkApp {
-	private static int numberOfPlayer = 1;
-	private static String question;
+	private static int numberOfPlayer = 0;
 	private static LinkedList<Player> player = new LinkedList<Player>();
 
 	public static void main(String[] args) throws Exception {
-
-		boolean gameCompleted = false;
 
 		StdOut.println("**********************************");
 		StdOut.println("** Welcome to the Skunk game!!! **");
@@ -45,44 +42,61 @@ public class SkunkApp {
 		// Query players for complete listing of rules
 		rules();
 		
-		// This block is for 1 game of multiple rounds
+		// Play one round of Skunk
+		playRound();
+		
+	}
+	
+	private static void playRound() throws Exception {
+
+		boolean roundCompleted = false;
+		boolean scored100 = false;
+		
+		// This block is for 1 round of multiple turns
 		// After 1 player gets to 100 every other player gets one more turn to pass them
-		while (!gameCompleted) {
-			// check to see if a player is over 100
-			for (int i = 0; i < numberOfPlayer; i++) {
-				if (player.get(i).getGame().getCurrentRound().getRoundTotal() >= 20) {
-					StdOut.println(player.get(i).getName() + " has scored " + player.get(i).getGame().getCurrentRound().getRoundTotal() + " points!");
-					StdOut.println("All players get one more turn to score more than " + player.get(i).getName());	
-				}				
+		while (!roundCompleted) {
+			
+			StdOut.println("A new round is starting.");
+			StdOut.println("Press any key to continue....\n");
+			System.in.read();
+			
+			// if someone has scored 100 these are the last turns
+			if (scored100 == true) {
+				roundCompleted = true;
 			}
 			
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
-				if (player.get(i).getGame().getCurrentRound().getRoundTotal() < 20) {
+				// taking turns and only allowing to take turn if starting with < 100 points in round
+				if (player.get(i).getGame().getCurrentRound().getRoundTotal() < 100) {
 					StdOut.println("\n\n\n******************************");
 					StdOut.println("Hello " + player.get(i).getName());
 					StdOut.println("It's turn " + player.get(i).getGame().getCurrentRound().getTurnNumber() + ".\n");
 					TurnController turnController = new TurnController();
 					turnController.startTurn(player.get(i).getGame().getCurrentTurn());
-				} else {
-					gameCompleted = true;
+					player.get(i).getGame().getCurrentRound().addTurnToRoundTotal();
+					player.get(i).getGame().getCurrentRound().newTurn();
+					
+					// these conditions are only true for first to score 100 points in the round
+					if ((player.get(i).getGame().getCurrentRound().getRoundTotal() >= 100) && (scored100 == false)) {
+						StdOut.println(player.get(i).getName() + " has scored " + player.get(i).getGame().getCurrentRound().getRoundTotal() + " points!");
+						StdOut.println("All players get one more turn to score more than " + player.get(i).getName());
+						scored100 = true;
+						break;
+					}
 				}
-			}			
+			}	
  
-			// Print player turns summary 
-			roundSummary();			
+			// Print round summary for all players
+			roundSummary();	
 		}
 		
-		StdOut.println("We have a game winner!");
-		roundSummary();
+		StdOut.println("We have a round winner!");
 	}
 
 	public static void roundSummary() throws Exception {
 
 		for (int i = 0; i < numberOfPlayer; i++) {
-
-			player.get(i).getGame().getCurrentRound().newTurn();
-
 			StdOut.println("\n******************************");
 			StdOut.println("\n********Round Summary*********");
 			StdOut.println("\n******************************");
@@ -102,8 +116,5 @@ public class SkunkApp {
 				System.out.println(line);
 			}
 		}
-		
-		StdOut.println("Press any key to continue....\n");
-		System.in.read();
 	}
 }
