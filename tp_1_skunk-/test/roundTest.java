@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertEquals;
+
 import java.util.LinkedList;
 
 import org.junit.Before;
@@ -8,37 +10,60 @@ import mainPackage.Turn;
 
 public class roundTest {
 	
-	Round round;
+
 	LinkedList<Turn> turn = new LinkedList<Turn>();
 	public int roundTotal = 0;
 
 	
 	@Before
 	public void setUp() throws Exception {
-		this.round = new Round();
+
 	}
 	
 
 	@Test
 	public void getRoundTotalTest() throws Exception {
 		Round round = new Round();
-		round.getRoundTotal();
+		round.setRoundTotal(15);
+		assertEquals(15,round.getRoundTotal());
+
 	}
 	
 	@Test
-	public void getTurnNumberTest() {
-		LinkedList<Turn> turn = new LinkedList<Turn>();
-		roundTotal = 0;
-		round.getTurnNumber();
+	public void getTurnNumberTest() throws Exception {
+		Round round = new Round();
+		round.newTurn();
+		round.newTurn();
+		assertEquals(3,round.getTurnNumber());
 	}
 	@Test
 	public void getTurnTest() throws Exception {
-		LinkedList<Turn> turn = new LinkedList<Turn>();
-		round.getTurn();
+		Round round = new Round();
+		round.newTurn();
+		round.newTurn();
+		assertEquals(3,round.getTurn().size());
+	}
+	@Test
+	public void setTurnTest() throws Exception {
+		Round round = new Round();
+		
+		LinkedList<Turn> turn = new LinkedList<Turn> ();
+		turn.add(new Turn());
+		round.setTurn(turn);
+		round.getCurrentTurn().setDoubleSkunk(true);
+		assertEquals(true, round.getCurrentTurn().getDoubleSknuk());
 	}
 	
-	public void newTurnTest() {
-		LinkedList<Turn> turn = new LinkedList<Turn>();
+	@Test
+	public void getCurrentTurnTest() throws Exception {
+		Round round = new Round();
+		
+		round.newTurn();
+		round.getCurrentTurn().setDoubleSkunk(false);
+		round.newTurn();
+		round.getCurrentTurn().setDoubleSkunk(true);
+		
+		assertEquals(true,round.getCurrentTurn().getDoubleSknuk());
 		
 	}
 

@@ -32,6 +32,11 @@ public class Round {
 	public int getRoundTotal() {
 		return roundTotal;
 	}
+	
+	public void setRoundTotal(int roundTotal) {
+		this.roundTotal= roundTotal;
+	}
+
 
 	public int getTurnNumber() {
 		return (turn.size());
