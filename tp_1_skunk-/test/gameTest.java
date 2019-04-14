@@ -13,36 +13,21 @@ import mainPackage.Game;
 import mainPackage.Round;
 
 public class gameTest {
-	
 
-	public LinkedList<Round> round = new LinkedList<Round>();
-	
 	@Before
 	public void setUp() throws Exception {
 
 	}
 
 	@Test
-	public void getCurrentRoundTest() throws Exception {
+	public void newPlayerTest() throws Exception {
 		Game game = new Game();
-		game.getCurrentRound().newTurn();
-		game.getCurrentRound().newTurn();
-
 		
-		assertEquals(3,game.getCurrentRound().getTurn().size());
-	
-	}
-	
-	@Test
-	public void getCurrentTurnTest() throws Exception {
-		Game game = new Game();
-		game.getCurrentRound().newTurn();
-		game.getCurrentRound().newTurn();
-		game.getCurrentTurn().setTurnTotal(15);
-
+		game.newPlayer(1);
+		game.newPlayer(2);
+		game.newPlayer(3);
 		
-		assertEquals(15,game.getCurrentTurn().getTurnTotal());
+		assertEquals(3,game.totalPlayers());	
 	}
-
 
 }

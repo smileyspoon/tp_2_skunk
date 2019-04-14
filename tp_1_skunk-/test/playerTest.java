@@ -8,11 +8,6 @@ import mainPackage.Game;
 import mainPackage.Player;
 
 public class playerTest {
-	
-	private String name;
-	private int score;
-	private Game game;
-	Player player;
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
@@ -24,34 +19,16 @@ public class playerTest {
 
 	@Test
 	public void setNameTest() throws Exception {
-		Player player = new Player();
+		Player player = new Player(1);
 		String name ="Sheila";
 		player.setName(name);
 		assertEquals(name, player.getName());
 	}
 	
-
-
 	@Test
 	public void getScoreTest() throws Exception {
-		Player player = new Player();
+		Player player = new Player(1);
 		player.setScore(15);
 		assertEquals(15, player.getScore());
 	}
-	
-	@Test
-	public void getGame() throws Exception {
-		Player player = new Player();
-		Game game = new Game();
-		game.getCurrentRound().newTurn();
-		game.getCurrentRound().newTurn();
-		player.setGame(game);
-		
-		assertEquals(3, player.getGame().getCurrentRound().getTurnNumber());
-		
-		
-		
-
-	}
-
 }

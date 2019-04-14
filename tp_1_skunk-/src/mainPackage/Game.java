@@ -19,4 +19,8 @@ public class Game {
 	public Player getPlayer(int index) {
 		return player.get(index);		
 	}
+	
+	public int totalPlayers() {
+		return player.size();
+	}
 }

@@ -13,10 +13,6 @@ public class Player {
 	private String name;
 	private int score;
 	
-	public Player () {
-		
-	}
-	
 	public Player(int playerNumber) {
 		StdOut.println("What is player " + playerNumber + "'s name?");
 
@@ -50,17 +46,4 @@ public class Player {
 	public void setScore(int score) {
 		this.score = score;
 	}
-
-
-	public Game getGame() {
-		return game;
-	}
-
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
-
-	
 }
