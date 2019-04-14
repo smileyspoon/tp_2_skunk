@@ -10,6 +10,7 @@ public class Game {
 	
 	public Game () {		
 		kitty = 0;
+		
 	}
 	
 	public void newPlayer(int playerNumber) {
@@ -23,4 +24,13 @@ public class Game {
 	public int totalPlayers() {
 		return player.size();
 	}
+	//this should set the count of the pot
+	public void setKitty(int kitty) {
+		this.kitty= kitty;
+	}
+	//this should return the count of the pot
+	public int getKitty() {
+		return kitty;
+	}
+	
 }
