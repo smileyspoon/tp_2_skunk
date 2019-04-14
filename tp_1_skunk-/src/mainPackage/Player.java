@@ -1,52 +1,39 @@
 package mainPackage;
 
+import java.util.LinkedList;
+
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
 public class Player {
 
+	public LinkedList<Round> round = new LinkedList<Round>();
 	Game game;
 
 	private String name;
 	private int score;
-
-//	public Player(int playerNumber, String name) throws Exception {
-//		StdOut.println("What is player " + playerNumber + "'s name?");
-//
-//		StdIn.readLine();
-//		name = StdIn.readString();
-//
-//		this.setName(name);
-//		newGame();
-//		
-//		
-//	}
-//	
+	
 	public Player () {
 		
 	}
 	
-	public Player(int playerNumber) throws Exception {
+	public Player(int playerNumber) {
 		StdOut.println("What is player " + playerNumber + "'s name?");
 
 		StdIn.readLine();
 		name = StdIn.readString();
 
 		this.setName(name);
-		newGame();
-		
-		
+		round.add(new Round());		
 	}
 	
-	public void Player() {
-		//
+	public Round getCurrentRound () {
+		return round.getLast();
 	}
 	
-	public void newGame () throws Exception {
-		
-		game = new Game();
-	}
-
+	public Turn getCurrentTurn() {
+		return getCurrentRound().getCurrentTurn();
+	}	
 
 	public String getName() {
 		return name;
@@ -74,4 +61,6 @@ public class Player {
 		this.game = game;
 	}
 
+
+	
 }

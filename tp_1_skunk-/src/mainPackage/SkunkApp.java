@@ -11,8 +11,9 @@ import java.io.BufferedReader;
 
 public class SkunkApp {
 	private static int numberOfPlayer = 0;
-	private static LinkedList<Player> player = new LinkedList<Player>();
 
+	private static Game game = new Game();
+	
 	public static void main(String[] args) throws Exception {
 
 		StdOut.println("**********************************");
@@ -36,7 +37,7 @@ public class SkunkApp {
 
 		// Enter name for each player
 		for (int i = 0; i < numberOfPlayer; i++) {
-			player.add(new Player(i + 1));
+			game.newPlayer(i+1);
 		}
 
 		// Query players for complete listing of rules
@@ -68,19 +69,20 @@ public class SkunkApp {
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
 				// taking turns and only allowing to take turn if starting with < 100 points in round
-				if (player.get(i).getGame().getCurrentRound().getRoundTotal() < 100) {
+				if (game.getPlayer(i).getCurrentRound().getRoundTotal() < 100) {
 					StdOut.println("\n\n\n******************************");
-					StdOut.println("Hello " + player.get(i).getName());
-					StdOut.println("It's turn " + player.get(i).getGame().getCurrentRound().getTurnNumber() + ".\n");
+					
+					StdOut.println("Hello " + game.getPlayer(i).getName());
+					StdOut.println("It's turn " + game.getPlayer(i).getCurrentRound().getTurnNumber() + ".\n");
 					TurnController turnController = new TurnController();
-					turnController.startTurn(player.get(i).getGame().getCurrentTurn());
-					player.get(i).getGame().getCurrentRound().addTurnToRoundTotal();
-					player.get(i).getGame().getCurrentRound().newTurn();
+					turnController.startTurn(game.getPlayer(i).getCurrentTurn());
+					game.getPlayer(i).getCurrentRound().addTurnToRoundTotal();
+					game.getPlayer(i).getCurrentRound().newTurn();
 					
 					// these conditions are only true for first to score 100 points in the round
-					if ((player.get(i).getGame().getCurrentRound().getRoundTotal() >= 100) && (scored100 == false)) {
-						StdOut.println(player.get(i).getName() + " has scored " + player.get(i).getGame().getCurrentRound().getRoundTotal() + " points!");
-						StdOut.println("All players get one more turn to score more than " + player.get(i).getName());
+					if ((game.getPlayer(i).getCurrentRound().getRoundTotal() >= 100) && (scored100 == false)) {
+						StdOut.println(game.getPlayer(i).getName() + " has scored " + game.getPlayer(i).getCurrentRound().getRoundTotal() + " points!");
+						StdOut.println("All players get one more turn to score more than " + game.getPlayer(i).getName());
 						scored100 = true;
 						break;
 					}
@@ -100,8 +102,8 @@ public class SkunkApp {
 			StdOut.println("\n******************************");
 			StdOut.println("\n********Round Summary*********");
 			StdOut.println("\n******************************");
-			StdOut.println(player.get(i).getName() + "'s Round score is:  "
-					+ player.get(i).getGame().getCurrentRound().getRoundTotal());
+			StdOut.println(game.getPlayer(i).getName() + "'s Round score is:  "
+					+ game.getPlayer(i).getCurrentRound().getRoundTotal());
 			StdOut.println("\n");
 		}
 	}

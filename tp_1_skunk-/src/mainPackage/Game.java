@@ -5,19 +5,18 @@ import java.util.LinkedList;
 //no chips yet
 public class Game {
 	
-	public LinkedList<Round> round = new LinkedList<Round>();
+	private static LinkedList<Player> player = new LinkedList<Player>();
+	private static int kitty;
 	
-	public Game () throws Exception {		
-		round.add(new Round());
+	public Game () {		
+		kitty = 0;
 	}
 	
-	public Round getCurrentRound () {
-		
-		return round.getLast();
+	public void newPlayer(int playerNumber) {
+		player.add(new Player(playerNumber));
 	}
 	
-	public Turn getCurrentTurn() {
-		
-		return getCurrentRound().getCurrentTurn();
-	}	
+	public Player getPlayer(int index) {
+		return player.get(index);		
+	}
 }

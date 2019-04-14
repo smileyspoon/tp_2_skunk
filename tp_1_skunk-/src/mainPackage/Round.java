@@ -8,11 +8,11 @@ public class Round {
 	private int roundTotal = 0;
 	private int roundChip =0;
 
-	public Round() throws Exception {
+	public Round() {
 		newTurn();
 	}
 
-	public void newTurn() throws Exception {
+	public void newTurn() {
 		turn.add(new Turn());
 	}
 	
