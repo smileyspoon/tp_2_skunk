@@ -8,9 +8,11 @@ import java.util.LinkedList;
 //to zero before starting the new round
 public class Turn {
 
-	public int turnTotal = 0;
-	public LinkedList<Dice> dice = new LinkedList<Dice>();
-	public boolean doubleSkunk = false;
+	private LinkedList<Dice> dice = new LinkedList<Dice>();
+	private int turnTotal = 0;
+	private int turnChip =0;
+	private boolean doubleSkunk = false;
+
 
 	public Turn() {
 
@@ -35,6 +37,14 @@ public class Turn {
 
 	public void setDoubleSkunk(boolean roundTotalZero) {
 		this.doubleSkunk = roundTotalZero;
+	}
+
+	public int getTurnChip() {
+		return turnChip;
+	}
+
+	public void setTurnChip(int chipsWonLost) {
+		this.turnChip = chipsWonLost;
 	}
 	
 

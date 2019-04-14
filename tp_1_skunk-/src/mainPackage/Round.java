@@ -6,6 +6,7 @@ public class Round {
 
 	private LinkedList<Turn> turn = new LinkedList<Turn>();
 	private int roundTotal = 0;
+	private int roundChip =0;
 
 	public Round() throws Exception {
 		newTurn();
@@ -16,15 +17,16 @@ public class Round {
 	}
 	
 	public void addTurnToRoundTotal() {
-		// adding up roundtotal from most current turn
-		if (turn.size() >= 1) {
+
 			roundTotal = (roundTotal + turn.getLast().getTurnTotal());
+			roundChip = roundChip + turn.getLast().getTurnChip();
+
 			
 			// check if the most recent turn had a double skunk, if true will set current roundtotal to zero
 			if (turn.getLast().getDoubleSknuk() == true) {
 				roundTotal = 0;
 			}
-		}
+		
 	}
 
 	public int getRoundTotal() {
@@ -51,6 +53,14 @@ public class Round {
 	public Turn getCurrentTurn() {
 
 		return turn.getLast();
+	}
+
+	public int getRoundChip() {
+		return roundChip;
+	}
+
+	public void setRoundChip(int roundChip) {
+		this.roundChip = roundChip;
 	}
 
 }

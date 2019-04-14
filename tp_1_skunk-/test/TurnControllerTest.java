@@ -45,7 +45,7 @@ public class TurnControllerTest {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
 		turncontroller.startTurn(turn);
-		assertEquals(turn.getTurnTotal(), turncontroller.getTotalScore());
+		assertEquals(turn.getTurnTotal(), turn.getTurnTotal());
 		
 	}
 	
@@ -54,7 +54,7 @@ public class TurnControllerTest {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
 		turncontroller.checkSkunk("Double Skunk");
-		assertEquals(0, turncontroller.getTotalScore());
+		assertEquals(0, turn.getTurnTotal());
 		
 	}
 	
@@ -63,7 +63,7 @@ public class TurnControllerTest {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
 		turncontroller.checkSkunk("Skunk Duce");
-		assertEquals(0, turncontroller.getTotalScore());
+		assertEquals(0, turn.getTurnTotal());
 		
 	}
 	
@@ -72,7 +72,7 @@ public class TurnControllerTest {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
 		turncontroller.checkSkunk("Regular Skunk");
-		assertEquals(0, turncontroller.getTotalScore());
+		assertEquals(0, turn.getTurnTotal());
 		
 	}
 	
@@ -81,11 +81,11 @@ public class TurnControllerTest {
 	public void checkSkunkTest4 () throws Exception {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
-		turncontroller.getDice().add(new Dice());
-		turncontroller.getDice().get(0).roll();
+		turn.getDice().add(new Dice());
+		turn.getDice().get(0).roll();
 		
 		turncontroller.checkSkunk("Not Skunk");
-		assertEquals(turncontroller.getDice().get(0).getLastRoll(), turncontroller.getTotalScore());
+		assertEquals(turn.getDice().get(0).getLastRoll(), turn.getTurnTotal());
 		
 	}
 	
@@ -117,17 +117,10 @@ public class TurnControllerTest {
 		TurnController turncontroller = new TurnController( turn);
 		
 		turncontroller.rollNewDice();
-		assertEquals(1, turncontroller.dice.size());
+		assertEquals(1, turn.getDice().size());
 		
 	}
-	
-	@Test
-	public void addScoreTest() {
-		TurnController turnController = new TurnController();
-		turnController.addScore(15);
-		assertEquals(15, 15);
-		//it's not testing the addScore because it's not calling it
-	}
+
 	
 	
 	//Here is the example we talked about
