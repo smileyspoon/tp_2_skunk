@@ -87,13 +87,30 @@ public class SkunkApp {
 						break;
 					}
 				}
-			}	
+			}
  
 			// Print round summary for all players
-			roundSummary();	
+			roundSummary();			
 		}
 		
 		StdOut.println("We have a round winner!");
+		
+		// Check highest score
+		int max = 0;
+		int maxInd = 0;
+		
+		for (int i = 0; i < numberOfPlayer; i++) {
+			if(game.getPlayer(i).getCurrentRound().getRoundTotal() > max) {
+				max = game.getPlayer(i).getCurrentRound().getRoundTotal();
+				maxInd = i;
+			}
+		}
+		
+		// Award kitty to highest scorer
+		game.getPlayer(maxInd).setChips(game.getKitty());
+		
+		// Print final round summary
+		roundSummary();
 	}
 
 	public static void roundSummary() throws Exception {
@@ -104,6 +121,9 @@ public class SkunkApp {
 			StdOut.println("\n******************************");
 			StdOut.println(game.getPlayer(i).getName() + "'s Round score is:  "
 					+ game.getPlayer(i).getCurrentRound().getRoundTotal());
+			game.getPlayer(i).setChips(game.getPlayer(i).getCurrentRound().getRoundChip());
+			StdOut.println(game.getPlayer(i).getName() + "'s Chip count is:  "
+					+ game.getPlayer(i).getChips());
 			StdOut.println("\n");
 		}
 	}
