@@ -19,7 +19,7 @@ public class Round {
 	public void addTurnToRoundTotal() {
 
 			roundTotal = (roundTotal + turn.getLast().getTurnTotal());
-			roundChip = roundChip + turn.getLast().getTurnChip();
+			roundChip = (roundChip + turn.getLast().getTurnChip());
 
 			
 			// check if the most recent turn had a double skunk, if true will set current roundtotal to zero
