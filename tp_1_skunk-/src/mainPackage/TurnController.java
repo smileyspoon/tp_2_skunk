@@ -2,8 +2,6 @@ package mainPackage;
 
 import java.util.LinkedList;
 
-import edu.princeton.cs.introcs.StdIn;
-
 public class TurnController {
 
 	private Turn turn;
@@ -16,7 +14,7 @@ public class TurnController {
 
 	}
 
-	// this is for tesing purposes
+	// this is for testing purposes
 	public TurnController(Turn turn) {
 
 		this.turn = turn;

@@ -18,14 +18,13 @@ public class Round {
 	}
 	
 	public void addTurnToRoundTotal() {
+		roundTotal = roundTotal + turn.getLast().getTurnTotal();
+		roundChip = roundChip + turn.getLast().getTurnChip();
 
-		roundTotal = (roundTotal + turn.getLast().getTurnTotal());
-		roundChip = (roundChip + turn.getLast().getTurnChip());
-		StdOut.println("getTurnChip debug: " + turn.getLast().getTurnChip());
 		// check if the most recent turn had a double skunk, if true will set current roundtotal to zero
 		if (turn.getLast().getDoubleSknuk() == true) {
 			roundTotal = 0;
-		}		
+		}
 	}
 
 	public int getRoundTotal() {
