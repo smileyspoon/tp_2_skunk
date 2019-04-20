@@ -69,17 +69,20 @@ public class SkunkApp {
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
 				// taking turns and only allowing to take turn if starting with < 100 points in round
-				if (game.getPlayer(i).getCurrentRound().getRoundTotal() < 100) {
-					StdOut.println("\n\n\n******************************");
-					
+				if (game.getPlayer(i).getCurrentRound().getRoundTotal() < 100) {	
+					StdOut.println("\n\n\n******************************");					
 					StdOut.println("Hello " + game.getPlayer(i).getName());
 					StdOut.println("It's turn " + game.getPlayer(i).getCurrentRound().getTurnNumber() + ".\n");
+					
+					// Create new turn for player
+					game.getPlayer(i).getCurrentRound().newTurn();
+					
+					// Player takes their turn
 					TurnController turnController = new TurnController();
 					turnController.startTurn(game.getPlayer(i).getCurrentTurn());
 					game.getPlayer(i).getCurrentRound().addTurnToRoundTotal();
-					game.getPlayer(i).getCurrentRound().newTurn();
 					
-					// these conditions are only true for first to score 100 points in the round
+					// These conditions are only true for first to score 100 points in the round
 					if ((game.getPlayer(i).getCurrentRound().getRoundTotal() >= 100) && (scored100 == false)) {
 						StdOut.println(game.getPlayer(i).getName() + " has scored " + game.getPlayer(i).getCurrentRound().getRoundTotal() + " points!");
 						StdOut.println("All players get one more turn to score more than " + game.getPlayer(i).getName());
@@ -121,13 +124,14 @@ public class SkunkApp {
 			StdOut.println("\n******************************");
 			StdOut.println(game.getPlayer(i).getName() + "'s Round score is:  "
 					+ game.getPlayer(i).getCurrentRound().getRoundTotal());
-			game.getPlayer(i).setChips(game.getPlayer(i).getCurrentRound().getRoundChip());
+			game.getPlayer(i).setChips(game.getPlayer(i).getCurrentRound().lastTurnChip());
 			StdOut.println(game.getPlayer(i).getName() + "'s Chip count is:  "
 					+ game.getPlayer(i).getChips());
 			StdOut.println("\n");
 		}
 	}
 	
+	// This method reads the rules from a text file
 	private static void rules() throws Exception {
 		StdOut.println("\nWould you like to view the rules for the game of Skunk?");
 		

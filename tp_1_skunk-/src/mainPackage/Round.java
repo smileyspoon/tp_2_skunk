@@ -2,6 +2,8 @@ package mainPackage;
 
 import java.util.LinkedList;
 
+import edu.princeton.cs.introcs.StdOut;
+
 public class Round {
 
 	private LinkedList<Turn> turn = new LinkedList<Turn>();
@@ -9,7 +11,6 @@ public class Round {
 	private int roundChip =0;
 
 	public Round() {
-		newTurn();
 	}
 
 	public void newTurn() {
@@ -18,15 +19,13 @@ public class Round {
 	
 	public void addTurnToRoundTotal() {
 
-			roundTotal = (roundTotal + turn.getLast().getTurnTotal());
-			roundChip = roundChip + turn.getLast().getTurnChip();
-
-			
-			// check if the most recent turn had a double skunk, if true will set current roundtotal to zero
-			if (turn.getLast().getDoubleSknuk() == true) {
-				roundTotal = 0;
-			}
-		
+		roundTotal = (roundTotal + turn.getLast().getTurnTotal());
+		roundChip = (roundChip + turn.getLast().getTurnChip());
+		StdOut.println("getTurnChip debug: " + turn.getLast().getTurnChip());
+		// check if the most recent turn had a double skunk, if true will set current roundtotal to zero
+		if (turn.getLast().getDoubleSknuk() == true) {
+			roundTotal = 0;
+		}		
 	}
 
 	public int getRoundTotal() {
@@ -36,7 +35,6 @@ public class Round {
 	public void setRoundTotal(int roundTotal) {
 		this.roundTotal= roundTotal;
 	}
-
 
 	public int getTurnNumber() {
 		return (turn.size());
@@ -62,5 +60,8 @@ public class Round {
 	public void setRoundChip(int roundChip) {
 		this.roundChip = roundChip;
 	}
-
+	
+	public int lastTurnChip() {
+		return getCurrentTurn().getTurnChip();
+	}
 }
