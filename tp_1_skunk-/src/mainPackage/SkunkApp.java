@@ -1,13 +1,11 @@
 package mainPackage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
-
-import java.io.FileReader;
-import java.io.BufferedReader;
 
 public class SkunkApp {
 	private static int numberOfPlayer = 0;
@@ -73,6 +71,7 @@ public class SkunkApp {
 					StdOut.println("\n\n\n******************************");					
 					StdOut.println("Hello " + game.getPlayer(i).getName());
 					StdOut.println("It's turn " + game.getPlayer(i).getCurrentRound().getTurnNumber() + ".\n");
+			
 					
 					// Create new turn for player
 					game.getPlayer(i).getCurrentRound().newTurn();

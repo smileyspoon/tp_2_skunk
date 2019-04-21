@@ -6,6 +6,7 @@ import java.util.LinkedList;
 public class Game {
 	
 	private static LinkedList<Player> player = new LinkedList<Player>();
+	//private static int kitty;
 	
 	public Game () {		
 
@@ -32,14 +33,6 @@ public class Game {
 	public int totalPlayers() {
 		return player.size();
 	}
-//	//this should set the count of the pot
-//	public void setKitty(int kitty) {
-//		this.kitty= kitty;
-//	}
-//	//this should return the count of the pot
-//	public int getKitty() {
-//		return kitty;
-//	}
 	
 	
 	

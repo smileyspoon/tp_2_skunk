@@ -2,8 +2,6 @@ package mainPackage;
 
 import java.util.LinkedList;
 
-import edu.princeton.cs.introcs.StdOut;
-
 public class Round {
 
 	private LinkedList<Turn> turn = new LinkedList<Turn>();
