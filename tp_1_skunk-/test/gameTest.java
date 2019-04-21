@@ -1,16 +1,10 @@
-import static org.junit.Assert.*;
-import mainPackage.*;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-
-import java.util.LinkedList;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import mainPackage.Game;
-import mainPackage.Round;
+import mainPackage.Player;
 
 public class gameTest {
 
@@ -26,8 +20,19 @@ public class gameTest {
 		game.newPlayer(1);
 		game.newPlayer(2);
 		game.newPlayer(3);
-		
+				
 		assertEquals(3,game.totalPlayers());	
+	}
+	
+	@SuppressWarnings("unused")
+	@Test
+	public void getPlayerTest() throws Exception {
+		Player player = new Player(1);
+		Game game = new Game();
+		game.getPlayer(1);		
+		
+		assertEquals (1,game.getPlayer(1));
+				
 	}
 
 }

@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Test;
 
-import mainPackage.Game;
 import mainPackage.Player;
 
 public class playerTest {
@@ -30,5 +29,14 @@ public class playerTest {
 		Player player = new Player(1);
 		player.setScore(15);
 		assertEquals(15, player.getScore());
+	}
+	
+	@Test
+	public void getChipsTest() throws Exception {
+		Player player = new Player(1);
+		int chips = 50;
+		player.setChips(chips);
+		assertEquals (100, player.getChips());
+						
 	}
 }
