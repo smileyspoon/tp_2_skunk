@@ -55,7 +55,7 @@ public class SkunkApp {
 		// After 1 player gets to 100 every other player gets one more turn to pass them
 		while (!roundCompleted) {
 			
-			StdOut.println("A new round is starting.");
+			StdOut.println("A new turn is starting.");
 			StdOut.println("Press any key to continue....\n");
 			System.in.read();
 			
