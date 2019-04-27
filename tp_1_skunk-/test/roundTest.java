@@ -34,14 +34,14 @@ public class roundTest {
 		Round round = new Round();
 		round.newTurn();
 		round.newTurn();
-		assertEquals(3,round.getTurnNumber());
+		assertEquals(2,round.getTurnNumber());
 	}
 	@Test
 	public void getTurnTest() throws Exception {
 		Round round = new Round();
 		round.newTurn();
 		round.newTurn();
-		assertEquals(3,round.getTurn().size());
+		assertEquals(2,round.getTurn().size());
 	}
 	@Test
 	public void setTurnTest() throws Exception {

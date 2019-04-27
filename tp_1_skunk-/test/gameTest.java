@@ -29,9 +29,9 @@ public class gameTest {
 	public void getPlayerTest() throws Exception {
 		Player player = new Player(1);
 		Game game = new Game();
-		game.getPlayer(1);		
+		game.getPlayer(1).setName("Jim");;		
 		
-		assertEquals (1,game.getPlayer(1));
+		assertEquals ("Jim",game.getPlayer(1).getName());
 				
 	}
 
