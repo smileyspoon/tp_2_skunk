@@ -79,33 +79,29 @@ public class TurnController {
 		 * 
 		 */
 
+		
+		//Refactoring part of the assignment
+		//refactoring below due to repeated code in the if statement
+		//Used Extract Method to remove the code smell
+		//GRASP used:  High Cohesion.  By removing repeated code, the code is more manageable and understandable.
 		if (rollResult.equals("Double Skunk")) {
 			// Lose accumulated score, turn is over, and turns the doubleSkunk flag to be
 			// true
 			// lose 4 chips
 			turnView.loseAccumulatedScore();
-			turnOver = true;
-			turn.setTurnTotal(0);
 			turn.setDoubleSkunk(true);
-			turn.setTurnChip(-4);
-			turnView.lostChip(turn.getTurnChip());
-			;
+			skunkPenalty(4);
+			
 		} else if (rollResult.equals("Skunk Duce")) {
 			// Lose turn score, lose turn
 			// Lose 2 chips
 			turnView.loseTurnScore();
-			turnOver = true;
-			turn.setTurnTotal(0);
-			turn.setTurnChip(-2);
-			turnView.lostChip(turn.getTurnChip());
+			skunkPenalty(2);
 		} else if (rollResult.equals("Regular Skunk")) {
 			// Lose turn score, lose turn
 			// lose 1 chip
 			turnView.loseTurnScore();
-			turnOver = true;
-			turn.setTurnTotal(0);
-			turn.setTurnChip(-1);
-			turnView.lostChip(turn.getTurnChip());
+			skunkPenalty(1);
 		} else if (rollResult.equals("Not Skunk")) {
 			// No skunks. Continue turn.
 
@@ -120,6 +116,13 @@ public class TurnController {
 			// this is my not so great attempt for error handling
 			throw new Exception("This is messed up ");
 		}
+	}
+
+	public void skunkPenalty(int penalty) {
+		turnOver = true;
+		turn.setTurnTotal(0);
+		turn.setTurnChip(-penalty);
+		turnView.lostChip(turn.getTurnChip());
 	}
 	
 	public boolean getTurnOver () {
