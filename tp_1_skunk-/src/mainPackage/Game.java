@@ -5,22 +5,21 @@ import java.util.LinkedList;
 //no chips yet
 public class Game {
 	
+	public int kitty = 0;
 	private static LinkedList<Player> player = new LinkedList<Player>();
-	//private static int kitty;
+	private static LinkedList<String> eliminatedPlayers = new LinkedList<String>();
 	
 	public Game () {		
-
-		
+	
 	}
-	public int Kitty = 0;
 	
 	public int getKitty() {
-		return Kitty;
-	}
-	public void setKitty(int Kitty) {
-		this.Kitty = Kitty;
+		return kitty;
 	}
 	
+	public void setKitty(int kitty) {
+		this.kitty = kitty;
+	}	
 	
 	public void newPlayer(int playerNumber) {
 		player.add(new Player(playerNumber));
@@ -34,7 +33,12 @@ public class Game {
 		return player.size();
 	}
 	
+	public void eliminatePlayer(int playerIndex) {
+		eliminatedPlayers.add(player.get(playerIndex).getName());
+		player.remove(playerIndex);
+	}
 	
-	
-	
+	public LinkedList<String> getEliminatedPlayers() {
+		return eliminatedPlayers;
+	}
 }

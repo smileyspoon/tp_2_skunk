@@ -14,6 +14,10 @@ public class SkunkApp {
 	
 	public static void main(String[] args) throws Exception {
 
+		boolean gameCompleted = false;
+		int winnerChipCount = 0;
+		String winner = "";
+		
 		StdOut.println("**********************************");
 		StdOut.println("** Welcome to the Skunk game!!! **");
 		StdOut.println("**********************************\n");
@@ -41,15 +45,43 @@ public class SkunkApp {
 		// Query players for complete listing of rules
 		rules();
 		
-		// Play one round of Skunk
-		playRound();
-		
+		// Start Game of Skunk
+		while(!gameCompleted) {
+			// Play one round of Skunk
+			playRound();
+			
+			//Display current player chip standings
+			displayStandings();			
+			
+			StdOut.println("Would you like to play another round?");
+			if((StdIn.readString().matches("N|n")) || (numberOfPlayer == 1)) {
+				// end game
+				// Determine winner by checking chip totals for all players
+				for (int i = 0; i < numberOfPlayer; i++) {
+					if (game.getPlayer(i).getChips() > winnerChipCount) {
+						winnerChipCount = game.getPlayer(i).getChips();
+						winner = game.getPlayer(i).getName();
+					}
+				}
+				
+				// Declare winner
+				StdOut.println("The game winner is " + winner);
+				
+				// Output final chip standings 
+				displayStandings();
+			}
+		}
 	}
 	
 	private static void playRound() throws Exception {
 
 		boolean roundCompleted = false;
 		boolean scored100 = false;
+		
+		// Initialize new round for all players
+		for (int i = 0; i < numberOfPlayer; i++) {
+			game.getPlayer(i).newRound();
+		}
 		
 		// This block is for 1 round of multiple turns
 		// After 1 player gets to 100 every other player gets one more turn to pass them
@@ -87,11 +119,22 @@ public class SkunkApp {
 						scored100 = true;
 						break;
 					}
+					
+					// Eliminate player if they have 0 chips
+					if (game.getPlayer(i).getChips() < 1) {
+						game.eliminatePlayer(i);
+						numberOfPlayer--;
+						
+						// End round if only 1 player is left
+						if (numberOfPlayer == 1) {
+							roundCompleted = true;
+						}
+					}
 				}
 			}
- 
+			
 			// Print round summary for all players
-			roundSummary();			
+			roundSummary();		
 		}
 		
 		StdOut.println("We have a round winner!");
@@ -122,6 +165,12 @@ public class SkunkApp {
 		return game.getPlayer(i).getCurrentRound();
 	}
 
+	public static void displayStandings() {
+		// Display player standings
+		
+		// Append names of eliminated players
+	}
+	
 	public static void roundSummary() throws Exception {
 
 		for (int i = 0; i < numberOfPlayer; i++) {
