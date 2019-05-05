@@ -21,8 +21,14 @@ public class Player {
 
 		StdIn.readLine();
 		name = StdIn.readString();
-
 		this.setName(name);
+	}
+	
+	// Refactoring part of the assignment
+	// Code smell: constructor is doing many things
+	// Used Extract Method to remove the code smell
+	// GRASP used:  High Cohesion. By making the class more cohesive, the code is more reusable.
+	public void newRound () {
 		round.add(new Round());
 	}
 	

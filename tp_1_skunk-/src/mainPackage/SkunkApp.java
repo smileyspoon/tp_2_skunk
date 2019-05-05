@@ -67,23 +67,22 @@ public class SkunkApp {
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
 				// taking turns and only allowing to take turn if starting with < 100 points in round
-				if (game.getPlayer(i).getCurrentRound().getRoundTotal() < 100) {	
+				if (currentPlayerRound(i).getRoundTotal() < 100) {	
 					StdOut.println("\n\n\n******************************");					
 					StdOut.println("Hello " + game.getPlayer(i).getName());
-					StdOut.println("It's turn " + game.getPlayer(i).getCurrentRound().getTurnNumber() + ".\n");
+					StdOut.println("It's turn " + currentPlayerRound(i).getTurnNumber() + ".\n");
 			
-					
 					// Create new turn for player
-					game.getPlayer(i).getCurrentRound().newTurn();
+					currentPlayerRound(i).newTurn();
 					
 					// Player takes their turn
 					TurnController turnController = new TurnController();
 					turnController.startTurn(game.getPlayer(i).getCurrentTurn());
-					game.getPlayer(i).getCurrentRound().addTurnToRoundTotal();
+					currentPlayerRound(i).addTurnToRoundTotal();
 					
 					// These conditions are only true for first to score 100 points in the round
-					if ((game.getPlayer(i).getCurrentRound().getRoundTotal() >= 100) && (scored100 == false)) {
-						StdOut.println(game.getPlayer(i).getName() + " has scored " + game.getPlayer(i).getCurrentRound().getRoundTotal() + " points!");
+					if ((currentPlayerRound(i).getRoundTotal() >= 100) && (scored100 == false)) {
+						StdOut.println(game.getPlayer(i).getName() + " has scored " + currentPlayerRound(i).getRoundTotal() + " points!");
 						StdOut.println("All players get one more turn to score more than " + game.getPlayer(i).getName());
 						scored100 = true;
 						break;
@@ -102,8 +101,8 @@ public class SkunkApp {
 		int maxInd = 0;
 		
 		for (int i = 0; i < numberOfPlayer; i++) {
-			if(game.getPlayer(i).getCurrentRound().getRoundTotal() > max) {
-				max = game.getPlayer(i).getCurrentRound().getRoundTotal();
+			if(currentPlayerRound(i).getRoundTotal() > max) {
+				max = currentPlayerRound(i).getRoundTotal();
 				maxInd = i;
 			}
 		}
@@ -115,6 +114,14 @@ public class SkunkApp {
 		roundSummary();
 	}
 
+	// Refactoring part of the assignment
+	// Code smell is repeated code (deeply nested linked lists)
+	// Used Extract Method to remove the code smell
+	// By refactoring , the code is more readable and less prone to bug insertions during maintenance.
+	private static Round currentPlayerRound(int i) {
+		return game.getPlayer(i).getCurrentRound();
+	}
+
 	public static void roundSummary() throws Exception {
 
 		for (int i = 0; i < numberOfPlayer; i++) {
@@ -122,8 +129,8 @@ public class SkunkApp {
 			StdOut.println("\n********Round Summary*********");
 			StdOut.println("\n******************************");
 			StdOut.println(game.getPlayer(i).getName() + "'s Round score is:  "
-					+ game.getPlayer(i).getCurrentRound().getRoundTotal());
-			game.getPlayer(i).setChips(game.getPlayer(i).getCurrentRound().lastTurnChip());
+					+ currentPlayerRound(i).getRoundTotal());
+			game.getPlayer(i).setChips(currentPlayerRound(i).lastTurnChip());
 			StdOut.println(game.getPlayer(i).getName() + "'s Chip count is:  "
 					+ game.getPlayer(i).getChips());
 			StdOut.println("\n");
