@@ -45,7 +45,9 @@ public class Player {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		// limit name to 15 characters
+		int maxLength = (name.length() < 15) ? name.length() : 15;
+		this.name = name.substring(0, maxLength);
 	}
 
 	public int getScore() {

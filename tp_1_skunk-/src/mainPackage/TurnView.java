@@ -15,11 +15,7 @@ public class TurnView {
 	}
 
 	public void showDice(LinkedList<Dice> dice, int counter) {
-
-		StdOut.println("Die 1 is " + dice.get(counter).getDie1() + ".");
-		StdOut.println("Die 2 is " + dice.get(counter).getDie2() + ".");
-		StdOut.println("Your roll total is " + dice.get(counter).getLastRoll() + ".\n");
-
+		StdOut.println("Your roll: " + dice.get(counter).getDie1() + " + " + dice.get(counter).getDie2() + " --> " + dice.get(counter).getLastRoll());
 	}
 
 	public void loseAccumulatedScore() {
@@ -40,9 +36,14 @@ public class TurnView {
 			StdOut.println("Roll " + (i + 1) + ":  " + dice.get(i).getLastRoll());
 		}
 
-		StdOut.println("Your dice roll total is:  " + turnTotal);
+		turnTotal(turnTotal);
 
 	}
+	
+	public void turnTotal(int total) {
+		StdOut.println("Your turn roll total is:  " + total + "\n");
+	}
+	
 	
 	public boolean rollQuestion() {
 		

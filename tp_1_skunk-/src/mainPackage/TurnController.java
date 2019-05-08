@@ -57,6 +57,8 @@ public class TurnController {
 
 		checkSkunk(roll.getRollResult());
 
+		turnView.turnTotal(turn.getTurnTotal());
+		
 		counter++;
 
 	}

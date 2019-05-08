@@ -3,6 +3,7 @@ package mainPackage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.InputMismatchException;
+import java.util.LinkedList;
 
 import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
@@ -47,12 +48,14 @@ public class SkunkApp {
 		
 		// Start Game of Skunk
 		while(!gameCompleted) {
+			
 			// Play one round of Skunk
 			playRound();
 			
 			//Display current player chip standings
-			displayStandings();			
+			gameStandings();			
 			
+			// Ask to play again, if no, then game is over and winner is declared
 			StdOut.println("Would you like to play another round?");
 			if((StdIn.readString().matches("N|n")) || (numberOfPlayer == 1)) {
 				// end game
@@ -68,7 +71,7 @@ public class SkunkApp {
 				StdOut.println("The game winner is " + winner);
 				
 				// Output final chip standings 
-				displayStandings();
+				gameStandings();
 			}
 		}
 	}
@@ -134,7 +137,7 @@ public class SkunkApp {
 			}
 			
 			// Print round summary for all players
-			roundSummary();		
+			roundStandings();		
 		}
 		
 		StdOut.println("We have a round winner!");
@@ -154,7 +157,7 @@ public class SkunkApp {
 		game.getPlayer(maxInd).setChips(game.getKitty());
 		
 		// Print final round summary
-		roundSummary();
+		roundStandings();
 	}
 
 	// Refactoring part of the assignment
@@ -165,25 +168,38 @@ public class SkunkApp {
 		return game.getPlayer(i).getCurrentRound();
 	}
 
-	public static void displayStandings() {
+	public static void gameStandings() {
 		// Display player standings
+		StdOut.println("\n**************************************");
+		StdOut.println("\n********Game Player Standings*********");
+		StdOut.println("\n**************************************");
+		StdOut.printf("\n%15s %25s", "NAME", "CHIPS");
+		
+		for (int i = 0; i < numberOfPlayer; i++) {
+			StdOut.printf("\n%15s %25d", game.getPlayer(i).getName(), game.getPlayer(i).getChips());
+		}
 		
 		// Append names of eliminated players
+		LinkedList<String> elimPlayers = new LinkedList<String>();
+		elimPlayers = game.getEliminatedPlayers();
+		for (int i = 0; i < elimPlayers.size(); i++) {
+			StdOut.printf("\n%15s %25s", elimPlayers.get(i), "ELIMINATED");
+		}		
 	}
 	
-	public static void roundSummary() throws Exception {
-
+	public static void roundStandings() throws Exception {
+		// Display player standings
+		StdOut.println("\n************************************************");
+		StdOut.println("\n*************Round Player Standings*************");
+		StdOut.println("\n************************************************");
+		StdOut.printf("\n%12s %17s %7s", "NAME", "ROLL SCORE", "CHIPS");
+		
 		for (int i = 0; i < numberOfPlayer; i++) {
-			StdOut.println("\n******************************");
-			StdOut.println("\n********Round Summary*********");
-			StdOut.println("\n******************************");
-			StdOut.println(game.getPlayer(i).getName() + "'s Round score is:  "
-					+ currentPlayerRound(i).getRoundTotal());
 			game.getPlayer(i).setChips(currentPlayerRound(i).lastTurnChip());
-			StdOut.println(game.getPlayer(i).getName() + "'s Chip count is:  "
-					+ game.getPlayer(i).getChips());
-			StdOut.println("\n");
+			StdOut.printf("\n%12s %12d %9d", game.getPlayer(i).getName(), currentPlayerRound(i).getRoundTotal(), game.getPlayer(i).getChips());
 		}
+						
+		StdOut.println("\n");
 	}
 	
 	// This method reads the rules from a text file
