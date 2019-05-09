@@ -56,7 +56,7 @@ public class SkunkApp {
 			gameStandings();			
 			
 			// Ask to play again, if no, then game is over and winner is declared
-			StdOut.println("Would you like to play another round?");
+			StdOut.println("\n\n\n Would you like to play another round?");
 			if((StdIn.readString().matches("N|n")) || (numberOfPlayer == 1)) {
 				// end game
 				// Determine winner by checking chip totals for all players
@@ -90,7 +90,7 @@ public class SkunkApp {
 		// After 1 player gets to 100 every other player gets one more turn to pass them
 		while (!roundCompleted) {
 			
-			StdOut.println("A new turn is starting.");
+			StdOut.println("\n\n\nA new turn is starting.");
 			StdOut.println("Press any key to continue....\n");
 			System.in.read();
 			
@@ -114,6 +114,7 @@ public class SkunkApp {
 					TurnController turnController = new TurnController();
 					turnController.startTurn(game.getPlayer(i).getCurrentTurn());
 					currentPlayerRound(i).addTurnToRoundTotal();
+					game.setKitty(currentPlayerRound(i).getCurrentTurn().getTurnChip());
 					
 					// These conditions are only true for first to score 100 points in the round
 					if ((currentPlayerRound(i).getRoundTotal() >= 100) && (scored100 == false)) {
@@ -153,8 +154,12 @@ public class SkunkApp {
 			}
 		}
 		
+		
+		
 		// Award kitty to highest scorer
 		game.getPlayer(maxInd).setChips(game.getKitty());
+		//reset kitty to zero
+		game.resetKitty();
 		
 		// Print final round summary
 		roundStandings();

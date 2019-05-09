@@ -18,8 +18,13 @@ public class Game {
 	}
 	
 	public void setKitty(int kitty) {
-		this.kitty = kitty;
+		this.kitty = this.kitty -kitty;
 	}	
+	
+	public void resetKitty() {
+		
+		this.kitty = 0;
+	}
 	
 	public void newPlayer(int playerNumber) {
 		player.add(new Player(playerNumber));
