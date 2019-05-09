@@ -60,6 +60,22 @@ public class gameTest {
 
 		assertEquals(0,0);
 	}
+	
+	
+	@Test
+	public void kittyAndNegativePlayerScore() throws Exception {
+		Game game = new Game();
+		game.newPlayer(1);
+		//set player's chip to -1, as if lost two chips due to double duce, and is at -1 chip because not enough chips
+		game.getPlayer(0).setChips(-51);
+		
+		//simulate as if rolled double duce
+		game.setKitty(game.getPlayer(0), -2);
+		
+		//kitty should have 1 chip, since only one chip to give to kitty
+		assertEquals ("",1,game.getKitty());
+				
+	}
 
 ////	@Test
 ////	public void eliminatePlayerTest () throws Exception {
