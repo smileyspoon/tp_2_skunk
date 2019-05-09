@@ -114,7 +114,8 @@ public class SkunkApp {
 					TurnController turnController = new TurnController();
 					turnController.startTurn(game.getPlayer(i).getCurrentTurn());
 					currentPlayerRound(i).addTurnToRoundTotal();
-					game.setKitty(currentPlayerRound(i).getCurrentTurn().getTurnChip());
+					game.getPlayer(i).setChips(currentPlayerRound(i).lastTurnChip());
+					game.setKitty(game.getPlayer(i), currentPlayerRound(i).getCurrentTurn().getTurnChip());
 					
 					// These conditions are only true for first to score 100 points in the round
 					if ((currentPlayerRound(i).getRoundTotal() >= 100) && (scored100 == false)) {
@@ -138,6 +139,7 @@ public class SkunkApp {
 			}
 			
 			// Print round summary for all players
+			
 			roundStandings();		
 		}
 		
@@ -200,7 +202,7 @@ public class SkunkApp {
 		StdOut.printf("\n%12s %17s %7s", "NAME", "ROLL SCORE", "CHIPS");
 		
 		for (int i = 0; i < numberOfPlayer; i++) {
-			game.getPlayer(i).setChips(currentPlayerRound(i).lastTurnChip());
+			
 			StdOut.printf("\n%12s %12d %9d", game.getPlayer(i).getName(), currentPlayerRound(i).getRoundTotal(), game.getPlayer(i).getChips());
 		}
 						
