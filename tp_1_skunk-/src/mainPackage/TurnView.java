@@ -67,6 +67,14 @@ public class TurnView {
 	
 	public void lostChip(int chip) {
 		
+		if(chip == -1) {
+			StdOut.println("Skunk!");
+		}else if(chip == -2) {
+			StdOut.println("Skunk Deuce!");
+		}else if(chip == -4) {
+			StdOut.println("Double Skunk!");
+		}
+			
 		StdOut.println("You lost " + chip + " chip(s)");
 		
 	}

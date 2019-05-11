@@ -58,7 +58,7 @@ public class SkunkApp {
 			// Ask to play again, if no, then game is over and winner is declared
 			StdOut.println("\n\n\n Would you like to play another round?");
 			if((StdIn.readString().matches("N|n")) || (numberOfPlayer == 1)) {
-				// end game
+							
 				// Determine winner by checking chip totals for all players
 				for (int i = 0; i < numberOfPlayer; i++) {
 					if (game.getPlayer(i).getChips() > winnerChipCount) {
@@ -72,6 +72,8 @@ public class SkunkApp {
 				
 				// Output final chip standings 
 				gameStandings();
+				
+				gameCompleted = true;
 			}
 		}
 	}
@@ -98,7 +100,7 @@ public class SkunkApp {
 			if (scored100 == true) {
 				roundCompleted = true;
 			}
-			
+			 
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
 				// taking turns and only allowing to take turn if starting with < 100 points in round
@@ -177,9 +179,9 @@ public class SkunkApp {
 
 	public static void gameStandings() {
 		// Display player standings
-		StdOut.println("\n**************************************");
-		StdOut.println("\n********Game Player Standings*********");
-		StdOut.println("\n**************************************");
+		StdOut.println("\n************************************************");
+		StdOut.println("\n**************Game Player Standings*************");
+		StdOut.println("\n************************************************");
 		StdOut.printf("\n%15s %25s", "NAME", "CHIPS");
 		
 		for (int i = 0; i < numberOfPlayer; i++) {
