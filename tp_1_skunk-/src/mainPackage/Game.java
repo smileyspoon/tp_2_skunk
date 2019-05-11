@@ -39,6 +39,10 @@ public class Game {
 	public void newPlayer(int playerNumber) {
 		player.add(new Player(playerNumber));
 	}
+	
+	public void newPlayer() {
+		player.add(new Player());
+	}
 
 	public Player getPlayer(int index) {
 		return player.get(index);

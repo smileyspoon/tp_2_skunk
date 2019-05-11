@@ -17,9 +17,9 @@ public class gameTest {
 	public void newPlayerTest() throws Exception {
 		Game game = new Game();
 
-		game.newPlayer(1);
-		game.newPlayer(2);
-		game.newPlayer(3);
+		game.newPlayer();
+		game.newPlayer();
+		game.newPlayer();
 
 		assertEquals(3,game.totalPlayers());
 	}
@@ -27,7 +27,7 @@ public class gameTest {
 	@SuppressWarnings("unused")
 	@Test
 	public void getPlayerTest() throws Exception {
-		Player player = new Player(1);
+		Player player = new Player();
 		Game game = new Game();
 		game.getPlayer(1).setName("Jim");
 
@@ -38,7 +38,7 @@ public class gameTest {
 	@Test
 	public void getKittyTest() {
 		Game game = new Game();
-		Player player = new Player(1);
+		Player player = new Player();
 		game.setKitty(player, 5);
 		assertEquals((-5),game.getKitty());
 
@@ -46,7 +46,7 @@ public class gameTest {
 	@Test
 	public void setKittyTest() {
 		Game game = new Game();
-		Player player = new Player(1);
+		Player player = new Player();
 		game.setKitty(player, 17);
 		assertEquals(17,17);
 
@@ -54,7 +54,7 @@ public class gameTest {
 	@Test
 	public void resetKittyTest() {
 		Game game = new Game();
-		Player player = new Player(1);
+		Player player = new Player();
 		game.setKitty(player,15);
 		game.resetKitty();
 
@@ -65,7 +65,7 @@ public class gameTest {
 	@Test
 	public void kittyAndNegativePlayerScore() throws Exception {
 		Game game = new Game();
-		game.newPlayer(1);
+		game.newPlayer();
 		//set player's chip to -1, as if lost two chips due to double duce, and is at -1 chip because not enough chips
 		game.getPlayer(0).setChips(-51);
 		

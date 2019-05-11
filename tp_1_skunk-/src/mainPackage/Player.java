@@ -24,6 +24,11 @@ public class Player {
 		this.setName(name);
 	}
 	
+	public Player () {
+		chips = 50;
+
+	}
+	
 	// Refactoring part of the assignment
 	// Code smell: constructor is doing many things
 	// Used Extract Method to remove the code smell

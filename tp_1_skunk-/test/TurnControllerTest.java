@@ -38,16 +38,18 @@ public class TurnControllerTest {
 	public void tearDown() throws Exception {
 	}
 	
-	@Test
-	//enter Y
-	public void startTurnTest () throws Exception {
-		
+	@Test 
+	//test to see if there was a successful roll by checking if the last roll for the dice is greater than zero
+	public void rollTest () throws Exception {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
-		turncontroller.startTurn(turn);
-		assertEquals(turn.getTurnTotal(), turn.getTurnTotal());
 		
+		turncontroller.roll();
+
+		assertEquals(true, turn.getDice().getLast().getLastRoll()>0);
 	}
+	
+
 	
 	@Test 
 	public void checkSkunkTest () throws Exception {
@@ -139,7 +141,19 @@ public class TurnControllerTest {
 	round.add(new Round());
 
 		
+	}
+	
+	
+	//testing best set and get turnover
+	@Test
+	public void setTurnOverText () {
 		
+	TurnController turnController = new TurnController();
+	
+	turnController.setTurnOver(true);
+	
+	assertEquals(true, turnController.getTurnOver());
+	
 	}
 
 }

@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import mainPackage.Round;
 import mainPackage.Turn;
+import mainPackage.TurnController;
 
 public class roundTest {
 	
@@ -66,5 +67,22 @@ public class roundTest {
 		assertEquals(true,round.getCurrentTurn().getDoubleSknuk());
 		
 	}
+	
+	//testing to see if addTurntoRoundTotal works properly
+	@Test
+	public void addTurnToRoundTotalTst () throws Exception {
+		
+		Round round = new Round ();
+		round.newTurn();		
+		round.setRoundChip(5);
+		round.addTurnToRoundTotal();
+		round.setRoundTotal(10);
+		
+		assertEquals(5, round.getRoundChip());
+		assertEquals(10,round.getRoundTotal());
+		
+	}
+	
+
 
 }
