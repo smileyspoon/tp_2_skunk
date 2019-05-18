@@ -75,7 +75,7 @@ public class TurnController {
 		 * 1+1 Double Skunk: double skunk lose turn and accumulated round score, lose 4
 		 * chips
 		 * 
-		 * 1+2, 2+1 Skunk Duce: lose turn, lose current turn score, lose 2 chips
+		 * 1+2, 2+1 Skunk Deuce: lose turn, lose current turn score, lose 2 chips
 		 * 
 		 * 1+ * Regular Skunk: lose turn, lose current turn score, lose 1 chip
 		 * 
@@ -94,7 +94,7 @@ public class TurnController {
 			turn.setDoubleSkunk(true);
 			skunkPenalty(4);
 			
-		} else if (rollResult.equals("Skunk Duce")) {
+		} else if (rollResult.equals("Skunk Deuce")) {
 			// Lose turn score, lose turn
 			// Lose 2 chips
 			turnView.loseTurnScore();

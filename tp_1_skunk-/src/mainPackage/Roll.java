@@ -5,7 +5,7 @@ public class Roll {
 	/*
 	 * 1+1 Double Skunk: double skunk lose turn and accumulated round score, lose 4 chips
 	 * 
-	 * 1+2, 2+1 Skunk Duce: lose turn, lose current turn score, lose 2 chips
+	 * 1+2, 2+1 Skunk Deuce: lose turn, lose current turn score, lose 2 chips
 	 * 
 	 * 1+ * Regular Skunk: lose turn, lose current turn score, lose 1 chip
 	 * 
@@ -22,9 +22,9 @@ public class Roll {
 			setRollResult(doubleSkunk(dice));
 		}
 		
-		else if (skunkDuce(dice) != null) {
+		else if (skunkDeuce(dice) != null) {
 			
-			setRollResult(skunkDuce(dice));
+			setRollResult(skunkDeuce(dice));
 		}
 		
 		else if (regularSkunk(dice)!= null) {
@@ -57,12 +57,12 @@ public class Roll {
 
 	}
 
-	public String skunkDuce(Dice dice) {
+	public String skunkDeuce(Dice dice) {
 		
 		if ((dice.getDie1() ==1 && dice.getDie2() ==2) || (dice.getDie1() ==2 && dice.getDie2() ==1)) {
 
 
-			return "Skunk Duce";
+			return "Skunk Deuce";
 		}
 		
 		else {

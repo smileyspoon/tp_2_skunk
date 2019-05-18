@@ -33,7 +33,7 @@ public class TurnView {
 
 		StdOut.println("\nYour roll summary is: ");
 		for (int i = 0; i < counter; i++) {
-			StdOut.println("Roll " + (i + 1) + ":  " + dice.get(i).getLastRoll());
+			StdOut.println("Roll " + (i + 1) + ":  " + dice.get(i).getDie1() + " + " + dice.get(i).getDie2() + " --> " + dice.get(i).getLastRoll());
 		}
 
 		turnTotal(turnTotal);

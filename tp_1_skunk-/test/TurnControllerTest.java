@@ -64,7 +64,7 @@ public class TurnControllerTest {
 	public void checkSkunkTest2 () throws Exception {
 		Turn turn = new Turn ();
 		TurnController turncontroller = new TurnController( turn);
-		turncontroller.checkSkunk("Skunk Duce");
+		turncontroller.checkSkunk("Skunk Deuce");
 		assertEquals(0, turn.getTurnTotal());
 		
 	}

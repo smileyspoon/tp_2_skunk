@@ -30,24 +30,24 @@ public class RollTest {
 	}
 	
 	@Test
-	public void skunkDuce() 
+	public void skunkDeuce() 
 	{
 		dice.roll();
 		dice.roll();
 		Roll roll = new Roll(dice);
 		rollResult= roll.getRollResult();
-		assertEquals("", "Skunk Duce", roll.getRollResult());		
+		assertEquals("", "Skunk Deuce", roll.getRollResult());		
 	}
 	
 	@Test
-	public void skunkDuce2() 
+	public void skunkDeuce2() 
 	{
 		dice.roll();
 		dice.roll();
 		dice.roll();
 		Roll roll = new Roll(dice);
 		rollResult= roll.getRollResult();
-		assertEquals("", "Skunk Duce", roll.getRollResult());		
+		assertEquals("", "Skunk Deuce", roll.getRollResult());		
 	}
 	
 	@Test
