@@ -90,20 +90,19 @@ public class TurnController {
 			// Lose accumulated score, turn is over, and turns the doubleSkunk flag to be
 			// true
 			// lose 4 chips
-			turnView.loseAccumulatedScore();
 			turn.setDoubleSkunk(true);
 			skunkPenalty(4);
-			
+			turnView.loseAccumulatedScore();
 		} else if (rollResult.equals("Skunk Deuce")) {
 			// Lose turn score, lose turn
 			// Lose 2 chips
-			turnView.loseTurnScore();
 			skunkPenalty(2);
+			turnView.loseTurnScore();
 		} else if (rollResult.equals("Regular Skunk")) {
 			// Lose turn score, lose turn
-			// lose 1 chip
-			turnView.loseTurnScore();
+			// lose 1 chip			
 			skunkPenalty(1);
+			turnView.loseTurnScore();
 		} else if (rollResult.equals("Not Skunk")) {
 			// No skunks. Continue turn.
 

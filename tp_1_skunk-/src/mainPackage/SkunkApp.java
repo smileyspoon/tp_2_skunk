@@ -48,7 +48,7 @@ public class SkunkApp {
 		
 		// Start Game of Skunk
 		while(!gameCompleted) {
-			
+			 
 			// Play one round of Skunk
 			playRound();
 			
@@ -68,7 +68,7 @@ public class SkunkApp {
 				}
 				
 				// Declare winner
-				StdOut.println("The game winner is " + winner);
+				StdOut.println("The game winner is " + winner + "!");
 				
 				// Output final chip standings 
 				gameStandings();
@@ -92,7 +92,7 @@ public class SkunkApp {
 		// After 1 player gets to 100 every other player gets one more turn to pass them
 		while (!roundCompleted) {
 			
-			StdOut.println("\n\n\nA new turn is starting.");
+			StdOut.println("\nA new turn is starting.");
 			StdOut.println("Press any key to continue....\n");
 			System.in.read();
 			
@@ -100,12 +100,12 @@ public class SkunkApp {
 			if (scored100 == true) {
 				roundCompleted = true;
 			}
-			 
+
 			// Players take their turns
 			for (int i = 0; i < numberOfPlayer; i++) {
 				// taking turns and only allowing to take turn if starting with < 100 points in round
 				if (currentPlayerRound(i).getRoundTotal() < 100) {	
-					StdOut.println("\n\n\n******************************");					
+					StdOut.println("\n\n******************************");					
 					StdOut.println("Hello " + game.getPlayer(i).getName());
 					StdOut.println("It's turn " + currentPlayerRound(i).getTurnNumber() + ".\n");
 			
@@ -144,24 +144,35 @@ public class SkunkApp {
 			
 			roundStandings();		
 		}
+
+		int maxScore = 0;
+		int maxIndex = 0;
 		
-		StdOut.println("We have a round winner!");
-		
-		// Check highest score
-		int max = 0;
-		int maxInd = 0;
-		
+		// Determine winner by checking chip totals for all players
 		for (int i = 0; i < numberOfPlayer; i++) {
-			if(currentPlayerRound(i).getRoundTotal() > max) {
-				max = currentPlayerRound(i).getRoundTotal();
-				maxInd = i;
+			// subtract 10 chips from players with 0 score in round and add them to kitty
+			// subtract 5 chips from all other players and add them to kitty
+			if (currentPlayerRound(i).getRoundTotal() == 0) {
+				game.getPlayer(i).setChips(-10);
+				game.setKitty(game.getPlayer(i), -10);
+			}
+			else if (currentPlayerRound(i).getRoundTotal() > maxScore) {
+				maxScore = currentPlayerRound(i).getRoundTotal();
+				maxIndex = i;
+				game.getPlayer(i).setChips(-5);
+				game.setKitty(game.getPlayer(i), -5);
+			}
+			else {
+				game.getPlayer(i).setChips(-5);
+				game.setKitty(game.getPlayer(i), -5);
 			}
 		}
 		
-		
+		// Declare winner
+		StdOut.println("The round winner is " + game.getPlayer(maxIndex).getName() + "!");		
 		
 		// Award kitty to highest scorer
-		game.getPlayer(maxInd).setChips(game.getKitty());
+		game.getPlayer(maxIndex).setChips(game.getKitty());
 		//reset kitty to zero
 		game.resetKitty();
 		
