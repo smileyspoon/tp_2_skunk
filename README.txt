@@ -1,7 +1,7 @@
 # tp_2_skunk
 Artifacts:
 As a team, we were able to reverse engineer our codes into the UML Design.
-We then, checked the smell codes and refactor a few methods to make sure they are easy to implement to another class or application.
+We then checked the smell codes and refactor a few methods to make sure they are easy to implement to another class or application.
 Once we completed the refactoring stage, we created Junit test cases and got our test coverage up to 75%.
 Lastly, we were able to have players play multiples rounds in one game.
 
